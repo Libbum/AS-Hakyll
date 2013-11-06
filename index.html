@@ -2,15 +2,28 @@
 title: Home
 ---
 
-<h2>Welcome</h2>
+<div class="8u skel-cell-mainContent">
+<!-- Content -->
+<div id="content">
 
-<img src="/images/haskell-logo.png" style="float: right; margin: 10px;" />
+$first$
 
-<p>Welcome to my blog!</p>
+<!-- TODO: Second and Third -->
+</div>
+<!-- /Content -->
+</div>
 
-<p>I've reproduced a list of recent posts here for your reading pleasure:</p>
-
-<h2>Posts</h2>
-$partial("templates/post-list.html")$
-
-<p>…or you can find more in the <a href="/archive.html">archives</a>.
+<div class="4u">
+<!-- Sidebar -->
+<div id="sidebar">
+    <section class="is">
+        <header>
+            <h2>Recent Posts</h2>
+        </header>
+        $partial("templates/post-list.html")$ 
+        <p>...or you can find more in the 
+        <a href="/archive.html" class="button button-style1">Archives</a>
+    </section>
+</div>
+<!-- /Sidebar -->
+</div>

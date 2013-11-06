@@ -1,8 +1,15 @@
-<div class="info">
-    Posted on $date$
-    $if(author)$
-        by $author$
-    $endif$
-</div>
+<article class="is is-post">
+    <header class="style1">
+        <h2>$title$</h2>
+        <!-- TODO: if byline clause -->
+        <span class="byline">Tempus feugiat veroeros sed nullam dolore</span>
+    </header>
+    <!-- TODO: if image clause -->
+    <a href="http://haskell.org" class="image image-featured">
+         <img src="/images/pic01.jpg" alt="" />
+     </a>
 
-$body$
+    <div class="info">Posted on $date$</div>
+
+    $body$
+</article>

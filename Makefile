@@ -8,7 +8,7 @@ post:
 	touch posts/`date +%Y-%m-%d`-${TITLE}.markdown
 
 preview: rebuild
-	./site preview
+	./site watch
 
 rebuild: site
 	./site rebuild

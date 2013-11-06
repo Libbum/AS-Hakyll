@@ -1,13 +1,13 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Data.Monoid (mappend)
-import           Hakyll
-
+import Data.Monoid (mappend)
+import Hakyll
+import Control.Applicative ((<$>))
 
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
-    match "images/*" $ do
+    match ("images/*" .||. "favicon.ico" .||. "js/*") $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -25,6 +25,7 @@ main = hakyllWith config $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
@@ -50,6 +51,7 @@ main = hakyllWith config $ do
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
+                    field "first" (const (itemBody <$> mostRecentPost)) `mappend`
                     defaultContext
 
             getResourceBody
@@ -62,10 +64,11 @@ main = hakyllWith config $ do
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
-    defaultContext
+postCtx = dateField "date" "%B %e, %Y" `mappend` defaultContext
 
 config :: Configuration
 config = defaultConfiguration
         {   deployCommand = "rsync -avz -e ssh ./_site/ Neophilus:www/axiomatic/hakyll"}
+
+mostRecentPost :: Compiler (Item String)
+mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "content")
