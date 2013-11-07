@@ -1000,7 +1000,7 @@
     {
         background-image: url('../images/rightfl.png'), url('../images/bg.jpg');
         background-repeat: no-repeat, repeat;
-        background-attachment: fixed, scroll;
+        background-attachment: fixed, fixed;
         background-position: -webkit-calc(50% + 640px) top, top left;
         background-position: -moz-calc(50% + 640px) top, top left;
         background-position: calc(50% + 640px) top, top left;

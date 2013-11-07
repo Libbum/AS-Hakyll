@@ -1,13 +1,11 @@
 <article class="is is-post">
     <header class="style1">
         <h2>$title$</h2>
-        <!-- TODO: if byline clause -->
-        <span class="byline">Tempus feugiat veroeros sed nullam dolore</span>
+        $if(byline)$<span class="byline">$byline$</span>$endif$
     </header>
-    <!-- TODO: if image clause -->
-    <a href="http://haskell.org" class="image image-featured">
-         <img src="/images/pic01.jpg" alt="" />
-     </a>
+    $if(image)$<div class="image image-featured">
+        <img src="/images/$image$" alt="" />
+    </div>$endif$
 
     <div class="info">Posted on $date$</div>
 

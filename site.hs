@@ -1,8 +1,8 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
+import Control.Applicative ((<$>))
 import Data.Monoid (mappend)
 import Hakyll
-import Control.Applicative ((<$>))
 
 --------------------------------------------------------------------------------
 main :: IO ()
@@ -64,7 +64,7 @@ main = hakyllWith config $ do
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
-postCtx = dateField "date" "%B %e, %Y" `mappend` defaultContext
+postCtx = dateField "date" "%B %e, %Y" `mappend` metadataField `mappend` defaultContext
 
 config :: Configuration
 config = defaultConfiguration
