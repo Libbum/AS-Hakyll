@@ -26,6 +26,7 @@
         font-weight: 400;
         color: #919499;
     }
+    
 
     h1,h2,h3,h4,h5,h6
     {
@@ -930,8 +931,13 @@
 
     #header-wrapper
     {
-        background: url('../images/banner.jpg') center center;
-        background-size: cover;
+        background-image: url('../images/rightflw.png'), url('../images/banner.jpg');
+        background-repeat: no-repeat, repeat;
+        background-attachment: fixed, scroll;
+        background-size: auto, cover;
+        background-position: -webkit-calc(50% + 640px) top, center center;
+        background-position: -moz-calc(50% + 640px) top, center center;
+        background-position: calc(50% + 640px) top, center center;
     }
     
         #header-wrapper:before
@@ -947,7 +953,13 @@
     
     #footer-wrapper
     {
-        background: #282b34 url('../images/overlay.png');
+        background-image: url('../images/rightflwf.png'), url('../images/overlay.png');
+        background-repeat: no-repeat, repeat;
+        background-attachment: fixed, scroll;
+        background-position: -webkit-calc(50% + 640px) 500px, center center;
+        background-position: -moz-calc(50% + 640px) 500px, center center;
+        background-position: calc(50% + 640px) 500px, center center;
+        background-color: #282b34;
         color: #eee;
         color: rgba(255,255,255,0.5);
     }
@@ -986,7 +998,12 @@
     
     .wrapper-style2
     {
-        background: #fff;
+        background-image: url('../images/rightfl.png'), url('../images/bg.jpg');
+        background-repeat: no-repeat, repeat;
+        background-attachment: fixed, scroll;
+        background-position: -webkit-calc(50% + 640px) top, top left;
+        background-position: -moz-calc(50% + 640px) top, top left;
+        background-position: calc(50% + 640px) top, top left;
     }
     
         .wrapper-style2 .title
