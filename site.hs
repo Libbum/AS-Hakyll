@@ -21,10 +21,12 @@ main = hakyllWith config $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
+    tags <- buildTags "posts/*" $ fromCapture "tags/*.html"
+
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= loadAndApplyTemplate "templates/post.html" (taggedPostCtx tags)
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
@@ -43,6 +45,17 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+    tagsRules tags $ \tag pattern -> do
+        let tagCtx = constField "title" ("Posts tagged as " ++ tag) `mappend` defaultContext
+
+        route idRoute
+        compile $ do
+            postsTagged tags pattern recentFirst
+                >>= makeItem
+                >>= loadAndApplyTemplate "templates/tag.html" tagCtx
+                >>= loadAndApplyTemplate "templates/default.html" tagCtx
+                >>= relativizeUrls
+
     create ["atom.xml"] $ do
         route idRoute
         compile $ do
@@ -59,6 +72,7 @@ main = hakyllWith config $ do
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
                     field "first" (const (itemBody <$> mostRecentPost)) `mappend`
+                    tagCloudField "cloud" 100 300 tags `mappend`
                     defaultContext
 
             getResourceBody
@@ -71,7 +85,7 @@ main = hakyllWith config $ do
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
-postCtx = dateField "date" "%B %e, %Y" `mappend` metadataField `mappend` defaultContext
+postCtx = dateField "date" "%B %e, %Y" `mappend` defaultContext
 
 config :: Configuration
 config = defaultConfiguration
@@ -89,3 +103,11 @@ atomFeedConfig = FeedConfiguration
     , feedRoot        = "http://axiomatic.neophilus.net"
     }
 
+postsTagged :: Tags -> Pattern -> ([Item String] -> Compiler [Item String]) -> Compiler String
+postsTagged tags pattern sortFilter = do
+    template <- loadBody "templates/post-item.html"
+    posts <- sortFilter =<< loadAll pattern
+    applyTemplateList template postCtx posts
+
+taggedPostCtx :: Tags -> Context String
+taggedPostCtx tags = tagsField "tags" tags `mappend` postCtx
