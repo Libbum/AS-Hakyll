@@ -43,6 +43,13 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= relativizeUrls
 
+    create ["atom.xml"] $ do
+        route idRoute
+        compile $ do
+            let feedCtx = postCtx `mappend` bodyField "description"
+            ---TODO: May need to build a feed snapshot, the article class wrappers etc may get in the way.
+            posts <- (take 10) <$> (recentFirst =<< loadAllSnapshots "posts/*" "content")
+            renderAtom atomFeedConfig feedCtx posts
 
     match "index.html" $ do
         route idRoute
@@ -72,3 +79,13 @@ config = defaultConfiguration
 
 mostRecentPost :: Compiler (Item String)
 mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "content")
+
+atomFeedConfig :: FeedConfiguration
+atomFeedConfig = FeedConfiguration
+    { feedTitle       = "Axiomatic Semantics"
+    , feedDescription = "Brute force solutions with proofs by intimidation"
+    , feedAuthorName  = "Tim DuBois"
+    , feedAuthorEmail = "tim@neophilus.net"
+    , feedRoot        = "http://axiomatic.neophilus.net"
+    }
+
