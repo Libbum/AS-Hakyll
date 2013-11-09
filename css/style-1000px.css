@@ -32,13 +32,33 @@
 	#header-wrapper
 	{
 		height: 300px !important;
+        background-image: url('../images/rightfl1000inv.png'), url('../images/banner.jpg');
+        background-repeat: no-repeat, repeat;
+        background-size: auto, cover;
+        background-position: -webkit-calc(50% + 350px) top, center center;
+        background-position: -moz-calc(50% + 350px) top, center center;
+        background-position: calc(50% + 350px) top, center center;
+        padding: 0;
 	}
 
+    .wrapper-style2
+    {
+        background-image: url('../images/rightfl1000.png'), url('../images/bg.jpg');
+        background-repeat: no-repeat, repeat;
+        background-position: -webkit-calc(50% + 350px) top, top left;
+        background-position: -moz-calc(50% + 350px) top, top left;
+        background-position: calc(50% + 350px) top, top left;
+    }
 	#intro-wrapper
 	{
 		padding-bottom: 7em;
 	}
-	
+
+    #footer-wrapper
+    {
+        background-image: url('../images/overlay.jpg');
+        background-repeat: repeat;
+    }
 /*********************************************************************************/
 /* Header                                                                        */
 /*********************************************************************************/
