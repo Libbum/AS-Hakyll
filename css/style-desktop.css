@@ -281,8 +281,25 @@
 
     #header-wrapper
     {
+        background-image: url('../images/rightflinv.png'), url('../images/banner.jpg');
+        background-repeat: no-repeat, repeat;
+        background-attachment: fixed, fixed;
+        background-size: auto, cover;
+        background-position: -webkit-calc(50% + 640px) top, center center;
+        background-position: -moz-calc(50% + 640px) top, center center;
+        background-position: calc(50% + 640px) top, center center;
         padding: 0;
         height: 300px;
+    }
+
+    .wrapper-style2
+    {
+        background-image: url('../images/rightfl.png'), url('../images/bg.jpg');
+        background-repeat: no-repeat, repeat;
+        background-attachment: fixed, fixed;
+        background-position: -webkit-calc(50% + 640px) top, top left;
+        background-position: -moz-calc(50% + 640px) top, top left;
+        background-position: calc(50% + 640px) top, top left;
     }
 
     #intro-wrapper
@@ -513,15 +530,20 @@
     #footer
     {
     }
-
+    
+    #footer-wrapper
+    {
+        background-image: url('../images/rightflinv.png'), url('../images/overlay.jpg');
+        background-repeat: no-repeat, repeat;
+        background-attachment: fixed, fixed;
+        background-position: -webkit-calc(50% + 640px) top, center center;
+        background-position: -moz-calc(50% + 640px) top, center center;
+        background-position: calc(50% + 640px) top, center center;
+    }
 /*********************************************************************************/
 /* Copyright                                                                     */
 /*********************************************************************************/
 
-    #copyright
-    {
-        margin: 1.5em 0 1.5em 0;
-    }
     
         #copyright span
         {

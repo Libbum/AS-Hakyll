@@ -929,17 +929,6 @@
             letter-spacing: 0.25em;
         }
 
-    #header-wrapper
-    {
-        background-image: url('../images/rightflw.png'), url('../images/banner.jpg');
-        background-repeat: no-repeat, repeat;
-        background-attachment: fixed, scroll;
-        background-size: auto, cover;
-        background-position: -webkit-calc(50% + 640px) top, center center;
-        background-position: -moz-calc(50% + 640px) top, center center;
-        background-position: calc(50% + 640px) top, center center;
-    }
-    
         #header-wrapper:before
         {
             content: '';
@@ -953,12 +942,6 @@
     
     #footer-wrapper
     {
-        background-image: url('../images/rightflwf.png'), url('../images/overlay.png');
-        background-repeat: no-repeat, repeat;
-        background-attachment: fixed, scroll;
-        background-position: -webkit-calc(50% + 640px) 500px, center center;
-        background-position: -moz-calc(50% + 640px) 500px, center center;
-        background-position: calc(50% + 640px) 500px, center center;
         background-color: #282b34;
         color: #eee;
         color: rgba(255,255,255,0.5);
@@ -996,15 +979,6 @@
             color: #fff;
         }
     
-    .wrapper-style2
-    {
-        background-image: url('../images/rightfl.png'), url('../images/bg.jpg');
-        background-repeat: no-repeat, repeat;
-        background-attachment: fixed, fixed;
-        background-position: -webkit-calc(50% + 640px) top, top left;
-        background-position: -moz-calc(50% + 640px) top, top left;
-        background-position: calc(50% + 640px) top, top left;
-    }
     
         .wrapper-style2 .title
         {
@@ -1105,6 +1079,7 @@
     #copyright
     {
         text-align: center;
+        margin: 1.5em 0 1.5em 0;
     }
     
         #copyright span

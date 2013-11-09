@@ -293,12 +293,21 @@
 
 	#header-wrapper
 	{
-		padding: 6em 2em 6em 2em;
+		padding: 4em 2em 4em 2em;
+                background-image: url('../images/banner.jpg');
+                background-repeat: repeat;
+                background-attachment: fixed;
+                background-size: cover;
 	}
 
+    .wrapper-style2
+    {
+        background-image: url('../images/bg.jpg');
+        background-repeat: repeat;
+        background-attachment: fixed;
+    }
 	#footer-wrapper
 	{
-		padding-top: 3em;
 	}
 
 		#footer-wrapper .feature-list section
@@ -416,7 +425,7 @@
 
 	#copyright
 	{
-		padding: 2em 0 0 0;
+		margin: 0.5em 0 0.5em 0;
 	}
 	
 		#copyright span
