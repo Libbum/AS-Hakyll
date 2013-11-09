@@ -14,6 +14,11 @@
         letter-spacing: 0.025em;
     }
 
+    html
+    {
+        background-color: #282b34;
+    }
+
     body
     {
         min-width: 1200px;

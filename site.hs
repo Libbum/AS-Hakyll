@@ -3,10 +3,14 @@
 import Control.Applicative ((<$>))
 import Data.Monoid (mappend)
 import Hakyll
+import Text.Pandoc.Options (writerHtml5)
 
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
+    let writerOpts = defaultHakyllWriterOptions { writerHtml5 = True }
+    let pandocHtml5Compiler = pandocCompilerWith defaultHakyllReaderOptions writerOpts
+
     match ("images/*" .||. "favicon.ico" .||. "js/*") $ do
         route   idRoute
         compile copyFileCompiler
@@ -17,7 +21,7 @@ main = hakyllWith config $ do
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocHtml5Compiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
@@ -25,7 +29,7 @@ main = hakyllWith config $ do
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocHtml5Compiler
             >>= loadAndApplyTemplate "templates/post.html" (taggedPostCtx tags)
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
@@ -91,6 +95,7 @@ config :: Configuration
 config = defaultConfiguration
         {   deployCommand = "rsync -avz -e ssh ./_site/ Neophilus:www/axiomatic/hakyll"}
 
+---TODO: Drop the tags off of this, we don't want them on the front page
 mostRecentPost :: Compiler (Item String)
 mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "content")
 
