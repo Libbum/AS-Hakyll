@@ -32,8 +32,10 @@ main = hakyllWith config $ do
         compile $ do
             compiled <- pandocHtml5Compiler
             full <- loadAndApplyTemplate "templates/post.html" (taggedPostCtx tags) compiled
+            index <- loadAndApplyTemplate "templates/post-index.html" (taggedPostCtx tags) compiled
             blurb <- loadAndApplyTemplate "templates/post-blurb.html" postCtx $ cutMore compiled
             saveSnapshot "content" full
+            saveSnapshot "index" index
             saveSnapshot "blurb" blurb
             loadAndApplyTemplate "templates/default.html" postCtx full
                 >>= relativizeUrls
@@ -100,9 +102,8 @@ config :: Configuration
 config = defaultConfiguration
         {   deployCommand = "rsync -avz -e ssh ./_site/ Neophilus:www/axiomatic/hakyll"}
 
----TODO: Drop the tags off of this, we don't want them on the front page
 mostRecentPost :: Compiler (Item String)
-mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "content")
+mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "index")
 
 recentBlurbs :: Compiler [Item String]
 recentBlurbs = (take 3) <$> (recentFirst =<< loadAllSnapshots "posts/*" "blurb")
