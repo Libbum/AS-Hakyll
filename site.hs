@@ -81,7 +81,7 @@ main = hakyllWith config $ do
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
                     field "first" (const (itemBody <$> mostRecentPost)) `mappend`
-                    field "second" (const (itemBody <$> (head <$> tail <$> recentBlurbs))) `mappend`
+                    field "second" (const (itemBody <$> (head <$> recentBlurbs))) `mappend`
                     field "third" (const (itemBody <$> (last <$> recentBlurbs))) `mappend`
                     tagCloudField "cloud" 100 300 tags `mappend`
                     defaultContext
@@ -106,7 +106,7 @@ mostRecentPost :: Compiler (Item String)
 mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "index")
 
 recentBlurbs :: Compiler [Item String]
-recentBlurbs = (take 3) <$> (recentFirst =<< loadAllSnapshots "posts/*" "blurb")
+recentBlurbs = tail . (take 3) <$> (recentFirst =<< loadAllSnapshots "posts/*" "blurb")
 
 atomFeedConfig :: FeedConfiguration
 atomFeedConfig = FeedConfiguration
