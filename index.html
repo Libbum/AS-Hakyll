@@ -7,7 +7,20 @@ title: Home
 <div id="content">
 
 $first$
-<!-- TODO: Second and Third -->
+    <div>
+        <div class="row">
+            <div class="6u">
+                <section class="is is-pair-one">
+                    Second
+                </section>
+            </div>
+            <div class="6u">
+                <section class="is is-pair-two">
+                    Third
+                </section>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- /Content -->
 </div>
@@ -28,6 +41,14 @@ $first$
             <h2>Tags</h2>
         </header>
         $cloud$
+    </section>
+    <section class="is">
+        <header>
+            <h2>Recent Github Activity</h2>
+        </header>
+        <div id="github">Loading Data...</div>
+        <script src="/js/github.js"></script>
+        <script src="https://api.github.com/users/libbum/repos?sort=pushed&callback=repolist"></script>
     </section>
 </div>
 <!-- /Sidebar -->
