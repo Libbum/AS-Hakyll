@@ -29,11 +29,14 @@ main = hakyllWith config $ do
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ pandocHtml5Compiler
-            >>= loadAndApplyTemplate "templates/post.html" (taggedPostCtx tags)
-            >>= saveSnapshot "content"
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
-            >>= relativizeUrls
+        compile $ do
+            compiled <- pandocHtml5Compiler
+            full <- loadAndApplyTemplate "templates/post.html" (taggedPostCtx tags) compiled
+            blurb <- loadAndApplyTemplate "templates/post-blurb.html" postCtx $ cutMore compiled
+            saveSnapshot "content" full
+            saveSnapshot "blurb" blurb
+            loadAndApplyTemplate "templates/default.html" postCtx full
+                >>= relativizeUrls
 
     create ["archive.html"] $ do
         route idRoute
@@ -76,6 +79,8 @@ main = hakyllWith config $ do
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Home"                `mappend`
                     field "first" (const (itemBody <$> mostRecentPost)) `mappend`
+                    field "second" (const (itemBody <$> (head <$> tail <$> recentBlurbs))) `mappend`
+                    field "third" (const (itemBody <$> (last <$> recentBlurbs))) `mappend`
                     tagCloudField "cloud" 100 300 tags `mappend`
                     defaultContext
 
@@ -99,6 +104,9 @@ config = defaultConfiguration
 mostRecentPost :: Compiler (Item String)
 mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "content")
 
+recentBlurbs :: Compiler [Item String]
+recentBlurbs = (take 3) <$> (recentFirst =<< loadAllSnapshots "posts/*" "blurb")
+
 atomFeedConfig :: FeedConfiguration
 atomFeedConfig = FeedConfiguration
     { feedTitle       = "Axiomatic Semantics"
@@ -116,3 +124,6 @@ postsTagged tags pattern sortFilter = do
 
 taggedPostCtx :: Tags -> Context String
 taggedPostCtx tags = tagsField "tags" tags `mappend` postCtx
+
+cutMore :: Item String -> Item String
+cutMore = fmap (unlines . takeWhile (/= "<!-- MORE -->") . lines)
