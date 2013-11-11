@@ -29,6 +29,10 @@
 /* Wrappers                                                                      */
 /*********************************************************************************/
 
+.blurb
+{
+    height: auto;
+}
 	.wrapper
 	{
 		padding: 4em 0 7em 0;
@@ -61,7 +65,7 @@
 
     #footer-wrapper
     {
-        background-image: url('../images/overlay.jpg');
+        background-image: url('../images/overlay.png');
         background-repeat: repeat;
     }
 /*********************************************************************************/
@@ -104,4 +108,30 @@
 		{
 			font-size: 2.25em;
 		}
-	
+
+
+    .plate 
+    {
+        background: rgb(40,43,52);
+        background: rgba(40,43,52,0.75);
+        border-radius: 0.35em;
+        box-shadow: inset 0px 0px 1px 1px rgba(255,255,255,0.5);
+        color: #ccc;
+        padding: 1em;
+    }
+    
+    .plate h2
+    {
+        color: #ccc;
+    }
+
+    .plate a
+    {
+        color: #fff;
+    }
+    
+            .is header.style2
+            {
+                margin: 0 0 1.5em 0;
+                height: 60px;
+            }

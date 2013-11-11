@@ -1,7 +1,11 @@
-<header>
+<header class="style2">
     <h2>$title$</h2>
 </header>
-
+$if(image)$<div class="image image-full">
+    <img src="/images/$image$" alt="" />
+</div>$endif$
+                
+<div class="blurb">
 $body$
-
+</div>
 <a href="$url$" class="button button-style1">Continue Reading &raquo;</a>

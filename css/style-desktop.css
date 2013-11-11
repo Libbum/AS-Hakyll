@@ -192,8 +192,28 @@
     .is
     {
     }
+   
+    .plate 
+    {
+        background: rgb(40,43,52);
+        background: rgba(40,43,52,0.75);
+        border-radius: 0.35em;
+        box-shadow: inset 0px 0px 1px 1px rgba(255,255,255,0.5);
+        color: #ccc;
+        padding: 1em;
+    }
     
-        .is header
+    .plate h2
+    {
+        color: #ccc;
+    }
+
+    .plate a
+    {
+        color: #fff;
+    }
+    
+    .is header
         {
             margin: 0 0 1.5em 0;
         }
@@ -203,6 +223,12 @@
                 position: relative;
                 margin: -0.5em 0 0 0;
                 padding-top: 0;
+            }
+
+            .is header.style2
+            {
+                margin: 0 0 1.5em 0;
+                height: 60px;
             }
 
         .is h2
@@ -219,6 +245,12 @@
             font-weight: 600;
             letter-spacing: 0.05em;
         }
+
+    .blurb 
+    {
+        -webkit-mask-image: -webkit-gradient(linear, left 60%, 
+            left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+    }
 
     .is-pair-one
     {
@@ -538,7 +570,7 @@
     
     #footer-wrapper
     {
-        background-image: url('../images/rightflinv.png'), url('../images/overlay.jpg');
+        background-image: url('../images/rightflinv.png'), url('../images/overlay.png');
         background-repeat: no-repeat, repeat;
         background-attachment: fixed, fixed;
         background-position: -webkit-calc(50% + 640px) top, center center;
