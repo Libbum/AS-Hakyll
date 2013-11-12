@@ -26,12 +26,16 @@ main = hakyllWith config $ do
             >>= relativizeUrls
 
     tags <- buildTags "posts/*" $ fromCapture "tags/*.html"
+    pages <- buildPaginate "posts/*"
 
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ do
             compiled <- pandocHtml5Compiler
-            full <- loadAndApplyTemplate "templates/post.html" (taggedPostCtx tags) compiled
+            let pagesCtx =
+                    paginateContext pages `mappend` tagsField "tags" tags `mappend` postCtx
+
+            full <- loadAndApplyTemplate "templates/post.html" pagesCtx compiled
             index <- loadAndApplyTemplate "templates/post-index.html" postCtx compiled
             blurb <- loadAndApplyTemplate "templates/post-blurb.html" postCtx $ cutMore compiled
             saveSnapshot "content" full
@@ -122,9 +126,6 @@ postsTagged tags pattern sortFilter = do
     template <- loadBody "templates/post-item.html"
     posts <- sortFilter =<< loadAll pattern
     applyTemplateList template postCtx posts
-
-taggedPostCtx :: Tags -> Context String
-taggedPostCtx tags = tagsField "tags" tags `mappend` postCtx
 
 cutMore :: Item String -> Item String
 cutMore = fmap (unlines . takeWhile (/= "<!-- MORE -->") . lines)
