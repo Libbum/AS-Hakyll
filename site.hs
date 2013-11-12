@@ -32,7 +32,7 @@ main = hakyllWith config $ do
         compile $ do
             compiled <- pandocHtml5Compiler
             full <- loadAndApplyTemplate "templates/post.html" (taggedPostCtx tags) compiled
-            index <- loadAndApplyTemplate "templates/post-index.html" (taggedPostCtx tags) compiled
+            index <- loadAndApplyTemplate "templates/post-index.html" postCtx compiled
             blurb <- loadAndApplyTemplate "templates/post-blurb.html" postCtx $ cutMore compiled
             saveSnapshot "content" full
             saveSnapshot "index" index
