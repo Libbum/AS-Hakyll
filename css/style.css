@@ -499,6 +499,13 @@
             letter-spacing: 0.25em;
         }
 
+        .sidedate 
+        {
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+
+
         #header-wrapper:before
         {
             content: '';

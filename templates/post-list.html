@@ -1,7 +1,12 @@
 <ul>
     $for(posts)$
         <li>
-            <a href="$url$">$title$</a> - $date$
+            <article class="is-post-excerpt">
+                <a href="$url$" class="image image-left"><img src="/images/$image$" alt></a>
+                <h3><a href="$url$">$title$</a></h3>
+                <p><span class="sidedate">$date$</span><br>
+                $byline$</p>
+            </article>
         </li>
     $endfor$
 </ul>
