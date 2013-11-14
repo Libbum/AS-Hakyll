@@ -40,7 +40,7 @@ main = hakyllWith config $ do
             saveSnapshot "content" full
             saveSnapshot "index" index
             saveSnapshot "blurb" blurb
-            loadAndApplyTemplate "templates/default.html" postCtx full
+            loadAndApplyTemplate "templates/default.html" (mathCtx `mappend` postCtx) full
                 >>= relativizeUrls
 
     create ["archive.html"] $ do
@@ -91,7 +91,7 @@ main = hakyllWith config $ do
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" indexCtx
+                >>= loadAndApplyTemplate "templates/default.html" (mathCtx `mappend` indexCtx)
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
@@ -125,3 +125,4 @@ postsTagged tags pattern sortFilter = do
 
 cutMore :: Item String -> Item String
 cutMore = fmap (unlines . takeWhile (/= "<!-- MORE -->") . lines)
+
