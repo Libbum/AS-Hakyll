@@ -20,7 +20,8 @@ main = hakyllWith config $ do
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
-        compile $ pandocHtml5Compiler
+        compile $ getResourceBody
+            >>= pandocHtml5Compiler (storeDirectory config)
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
@@ -30,7 +31,7 @@ main = hakyllWith config $ do
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ do
-            compiled <- pandocHtml5Compiler
+            compiled <- getResourceBody >>= pandocHtml5Compiler (storeDirectory config)
             let pagesCtx =
                     paginateContext pages `mappend` tagsField "tags" tags `mappend` postCtx
 
@@ -100,7 +101,7 @@ main = hakyllWith config $ do
 --------------------------------------------------------------------------------
 config :: Configuration
 config = defaultConfiguration
-        {   deployCommand = "rsync -avz -e ssh ./_site/ Neophilus:www/axiomatic/hakyll"}
+        { deployCommand = "rsync -avz -e ssh ./_site/ Neophilus:www/axiomatic/hakyll" }
 
 mostRecentPost :: Compiler (Item String)
 mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "index")

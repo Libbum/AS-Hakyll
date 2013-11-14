@@ -1,27 +1,256 @@
-pre {
-    background-color: #FDF6E3
+.highlight {
+  color: #2381c4;
 }
 
-/* KeyWordTok */
-pre.sourceCode span.kw { color: #268BD2; }
-/* DataTypeTok */
-pre.sourceCode span.dt { color: #268BD2; }
+.bash .highlight .nv {
+  color: #2aa198;
+}
 
-/* DecValTok (decimal value), BaseNTok, FloatTok */
-pre.sourceCode span.dv, .sourceCode .bn, .sourceCode .fl { color: #D33682; }
-/* CharTok */
-pre.sourceCode span.ch { color: #DC322F; }
-/* StringTok */
-pre.sourceCode span.st { color: #2AA198; }
-/* CommentTok */
-pre.sourceCode span.co { color: #93A1A1; }
-/* OtherTok */
-pre.sourceCode span.ot { color: #A57800; }
-/* AlertTok */
-pre.sourceCode span.al { color: #CB4B16; font-weight: bold; }
-/* FunctionTok */
-pre.sourceCode span.fu { color: #268BD2; }
-/* RegionMarkerTok */
-pre.sourceCode span.re { }
-/* ErrorTok */
-pre.sourceCode span.er { color: #D30102; font-weight: bold; }
+.python .highlight .kn {
+  color: #6c71c4;
+}
+.python .highlight .nn {
+  color: #2aa198;
+}
+
+.ruby .highlight .k {
+  color: #2aa198;
+}
+.ruby .highlight .no {
+  color: #2aa198;
+}
+
+.cpp .highlight .nl {
+  color: #6c71c4;
+}
+
+.java .highlight .o {
+  color: #dc322f;
+}
+.java .highlight .nc {
+  color: #2aa198;
+}
+
+.lua .highlight .kd {
+  color: #859900;
+}
+
+.cmake .highlight .nb {
+  color: #859900;
+}
+.cmake .highlight .nv {
+  color: #b58900;
+}
+.cmake .highlight .s {
+  color: #268bd2;
+}
+
+.highlight .bp {
+  color: #268bd2;
+}
+.highlight .c {
+  color: #586e75;
+}
+.highlight .c1 {
+  color: #586e75;
+}
+.highlight .cm {
+  color: #586e75;
+}
+.highlight .cp {
+  color: #859900;
+}
+.highlight .cs {
+  color: #859900;
+}
+.highlight .err {
+  color: #93a1a1;
+}
+.highlight .g {
+  color: #93a1a1;
+}
+.highlight .gd {
+  color: #2aa198;
+}
+.highlight .ge {
+  color: #93a1a1;
+  font-style: italic;
+}
+.highlight .gh {
+  color: #cb4b16;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .go {
+  color: #93a1a1;
+}
+.highlight .gp {
+  color: #93a1a1;
+}
+.highlight .gr {
+  color: #dc322f;
+}
+.highlight .gs {
+  color: #93a1a1;
+  font-weight: bold;
+}
+.highlight .gt {
+  color: #93a1a1;
+}
+.highlight .gu {
+  color: #cb4b16;
+}
+.highlight .il {
+  color: #2aa198;
+}
+.highlight .k {
+  color: #859900;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #268bd2;
+}
+.highlight .kn {
+  color: #859900;
+}
+.highlight .kp {
+  color: #859900;
+}
+.highlight .kr {
+  color: #2aa198;
+}
+.highlight .kt {
+  color: #b58900;
+}
+.highlight .l {
+  color: #93a1a1;
+}
+.highlight .ld {
+  color: #93a1a1;
+}
+.highlight .m {
+  color: #2aa198;
+}
+.highlight .mf {
+  color: #2aa198;
+}
+.highlight .mh {
+  color: #2aa198;
+}
+.highlight .mi {
+  color: #2aa198;
+}
+.highlight .mo {
+  color: #2aa198;
+}
+.highlight .n {
+  color: #268bd2;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .nb {
+  color: #b58900;
+}
+.highlight .nbp {
+  color: #dc322f;
+}
+.highlight .nc {
+  color: #268bd2;
+}
+.highlight .nd {
+  color: #268bd2;
+}
+.highlight .ne {
+  color: #cb4b16;
+}
+.highlight .nf {
+  color: #268bd2;
+}
+.highlight .ni {
+  color: #cb4b16;
+}
+.highlight .nl {
+  color: #93a1a1;
+}
+.highlight .nn {
+  color: #93a1a1;
+}
+.highlight .no {
+  color: #859900;
+}
+.highlight .nt {
+  color: #268bd2;
+}
+.highlight .nv {
+  color: #268bd2;
+}
+.highlight .nx {
+  color: #93a1a1;
+}
+.highlight .o {
+  color: #2aa198;
+}
+.highlight .ow {
+  color: #2aa198;
+}
+.highlight .p {
+  color: #dc322f;
+}
+.highlight .py {
+  color: #93a1a1;
+}
+.highlight .s {
+  color: #859900;
+}
+.highlight .s1 {
+  color: #859900;
+}
+.highlight .s2 {
+  color: #859900;
+}
+.highlight .sb {
+  color: #859900;
+}
+.highlight .sc {
+  color: #2aa198;
+}
+.highlight .sd {
+  color: #93a1a1;
+}
+.highlight .se {
+  color: #cb4b16;
+}
+.highlight .sh {
+  color: #93a1a1;
+}
+.highlight .si {
+  color: #2aa198;
+}
+.highlight .sr {
+  color: #dc322f;
+}
+.highlight .ss {
+  color: #2aa198;
+}
+.highlight .sx {
+  color: #2aa198;
+}
+.highlight .vc {
+  color: #268bd2;
+}
+.highlight .vg {
+  color: #268bd2;
+}
+.highlight .vi {
+  color: #268bd2;
+}
+.highlight .w {
+  color: #93a1a1;
+}
+.highlight .x {
+  color: #cb4b16;
+}

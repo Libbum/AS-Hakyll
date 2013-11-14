@@ -3,7 +3,10 @@
 module Site.Pandoc (pandocHtml5Compiler) where
 
 import Hakyll.Web.Pandoc
+import Hakyll.Core.Compiler
+import Hakyll.Core.Item
 import Text.Pandoc
+import Text.Pandoc.Walk (walk)
 import qualified Data.Set as S
 import System.IO (hClose, hGetContents, hPutStr, hSetEncoding, localeEncoding)
 import System.Process
@@ -16,12 +19,18 @@ import Text.Blaze.Html (preEscapedToHtml, (!))
 import Text.Blaze.Html.Renderer.String (renderHtml)
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
-
+import Control.Applicative ((<$>))
 import System.Directory
 import System.FilePath (takeDirectory)
 import System.IO.Error (isDoesNotExistError)
 
-pandocHtml5Compiler = pandocCompilerWith readerOpts writerOpts
+pandocHtml5Compiler :: FilePath -> Item String -> Compiler (Item String)
+pandocHtml5Compiler storePath item = do
+    pandocBuilder readerOpts writerOpts (walk $ pygments storePath) item
+
+pandocBuilder :: ReaderOptions -> WriterOptions -> (Pandoc -> Pandoc) -> Item String -> Compiler (Item String)
+pandocBuilder ropt wopt f item =
+  writePandocWith wopt . fmap f . readPandocWith ropt <$> (return $ item)
 
 cache :: String -> String -> FilePath -> String
 cache code lang storePath = unsafePerformIO $ do
