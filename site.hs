@@ -3,13 +3,12 @@
 import Control.Applicative ((<$>))
 import Data.Monoid (mappend)
 import Hakyll
-import Text.Pandoc.Options (writerHtml5)
+import Site.Fields
+import Site.Pandoc
 
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
-    let writerOpts = defaultHakyllWriterOptions { writerHtml5 = True }
-    let pandocHtml5Compiler = pandocCompilerWith defaultHakyllReaderOptions writerOpts
 
     match ("images/*" .||. "favicon.ico" .||. "js/*") $ do
         route   idRoute
@@ -99,9 +98,6 @@ main = hakyllWith config $ do
 
 
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx = dateField "date" "%B %e, %Y" `mappend` defaultContext
-
 config :: Configuration
 config = defaultConfiguration
         {   deployCommand = "rsync -avz -e ssh ./_site/ Neophilus:www/axiomatic/hakyll"}
