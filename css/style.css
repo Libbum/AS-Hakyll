@@ -268,7 +268,24 @@
     {
         display: inline-block;
     }
-    
+
+   .rounded-image {
+        display: inline-block;
+        border: solid 1px #aaa;
+        overflow: hidden;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 0 1px 3px rgba(255, 255, 255, .5);
+        -moz-box-shadow: 0 1px 3px rgba(255, 255, 255, .5);
+        box-shadow: 0 1px 3px rgba(255, 255, 255, .5);
+    }
+
+    .rounded-image img
+    {
+        display: block;
+        width: 100%;
+    }
         .image img
         {
             display: block;
@@ -583,6 +600,7 @@
         {
             height: 450px;
             overflow: hidden;
+            margin-bottom: 15px;
         }
 
 /*********************************************************************************/

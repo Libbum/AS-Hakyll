@@ -8,8 +8,6 @@
     </div>$endif$
 
     <div class="info">Posted on $date$</div>
-
     $body$
-    <!--TODO: link next and previous posts in tags div -->
     <div id="tags"><span><div class="left">$if(previousPage)$<a href="$previousPage$">«Previous</a>$else$ ... $endif$ |</div> &nbsp; $if(tags)$ $tags$ $endif$ &nbsp; <div class="right">| $if(nextPage)$<a href="$nextPage$">Next»</a>$else$ ... $endif$</div></span></div>
 </article>
