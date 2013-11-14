@@ -1,7 +1,7 @@
 *.swp
 site
-site.o
-site.hi
+*.o
+*.hi
 _*
 posts/
 resources/
