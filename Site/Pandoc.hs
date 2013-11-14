@@ -2,27 +2,27 @@
 
 module Site.Pandoc (pandocHtml5Compiler) where
 
+import Control.Applicative ((<$>))
+import Control.Concurrent (forkIO)
+import Control.Exception
+import Crypto.Hash
 import Hakyll.Web.Pandoc
 import Hakyll.Core.Compiler
 import Hakyll.Core.Item
-import Text.Pandoc
-import Text.Pandoc.Walk (walk)
-import qualified Data.Set as S
-import System.IO (hClose, hGetContents, hPutStr, hSetEncoding, localeEncoding)
-import System.Process
-import Control.Concurrent (forkIO)
-import Control.Exception
-import qualified Data.ByteString.Char8 as C (ByteString, pack)
-import System.IO.Unsafe
-import Crypto.Hash
 import Text.Blaze.Html (preEscapedToHtml, (!))
 import Text.Blaze.Html.Renderer.String (renderHtml)
-import qualified Text.Blaze.Html5 as H
-import qualified Text.Blaze.Html5.Attributes as A
-import Control.Applicative ((<$>))
+import Text.Pandoc
+import Text.Pandoc.Walk (walk)
 import System.Directory
 import System.FilePath (takeDirectory)
+import System.Process
+import System.IO (hClose, hGetContents, hPutStr, hSetEncoding, localeEncoding)
 import System.IO.Error (isDoesNotExistError)
+import System.IO.Unsafe
+import qualified Data.ByteString.Char8 as C (ByteString, pack)
+import qualified Data.Set as S
+import qualified Text.Blaze.Html5 as H
+import qualified Text.Blaze.Html5.Attributes as A
 
 pandocHtml5Compiler :: FilePath -> Item String -> Compiler (Item String)
 pandocHtml5Compiler storePath item = do
@@ -91,17 +91,16 @@ pygmentize lang contents = do
 
 readerOpts :: ReaderOptions
 readerOpts =
-  let extensions = S.fromList [
-        Ext_tex_math_dollars,
-        Ext_abbreviations
-        ]
-  in def {
-    readerSmart = True,
-    readerExtensions = S.union extensions (writerExtensions def)
-    }
+  let extensions =
+        S.fromList [ Ext_tex_math_dollars
+                   , Ext_abbreviations
+                   ]
+  in def { readerSmart = True
+         , readerExtensions = S.union extensions (writerExtensions def)
+         }
 
 writerOpts :: WriterOptions
-writerOpts = def {
-  writerHTMLMathMethod = MathJax "",
-  writerHighlight = False,
-  writerHtml5 = True }
+writerOpts = def { writerHTMLMathMethod = MathJax ""
+                 , writerHighlight = False
+                 , writerHtml5 = True
+                 }
