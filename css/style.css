@@ -264,6 +264,44 @@
             color: #b1b4b9;
         }
 
+    code 
+    {
+        background-color: #EEE;
+        padding: 1px 5px;
+    }
+
+    figure img 
+    {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    figure.code figcaption
+    {
+        border: 1px solid #565656;
+        border-bottom-color: #cbcbcb;
+        border-left-color: #a5a5a5;
+        border-right-color: #a5a5a5;
+        border-top: 0;
+        margin-top: 0;
+        -moz-border-radius-bottomleft: 5px;
+        -webkit-border-bottom-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        -moz-border-radius-bottomright: 5px;
+        -webkit-border-bottom-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    figcaption
+    {
+        font-style:italic;
+        font-size: 14px;
+        text-align: center;
+        text-shadow: #cbcccc 0 1px 0;
+        color: #474747;
+    }
+
     .math 
     {
         line-height: 140%;

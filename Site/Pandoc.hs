@@ -93,6 +93,7 @@ readerOpts :: ReaderOptions
 readerOpts =
   let extensions =
         S.fromList [ Ext_tex_math_dollars
+                   , Ext_inline_code_attributes
                    , Ext_abbreviations
                    ]
   in def { readerSmart = True
