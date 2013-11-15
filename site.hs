@@ -2,6 +2,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import Control.Applicative ((<$>))
+import Data.List.Split (splitOn)
 import Data.Monoid (mappend)
 import Hakyll
 import Site.Fields
@@ -38,7 +39,7 @@ main = hakyllWith config $ do
 
             full <- loadAndApplyTemplate "templates/post.html" pagesCtx compiled
             index <- loadAndApplyTemplate "templates/post-index.html" postCtx compiled
-            blurb <- loadAndApplyTemplate "templates/post-blurb.html" postCtx $ cutMore compiled
+            blurb <- loadAndApplyTemplate "templates/post-blurb.html" postCtx $ getBlurb compiled
             saveSnapshot "content" full
             saveSnapshot "index" index
             saveSnapshot "blurb" blurb
@@ -125,6 +126,5 @@ postsTagged tags pattern sortFilter = do
     posts <- sortFilter =<< loadAll pattern
     applyTemplateList template postCtx posts
 
-cutMore :: Item String -> Item String
-cutMore = fmap (unlines . takeWhile (/= "<!-- MORE -->") . lines)
-
+getBlurb :: Item String -> Item String
+getBlurb = fmap (unwords . takeWhile (/= "<!--BLURB-->") . splitOn " ")

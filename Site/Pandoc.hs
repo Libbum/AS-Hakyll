@@ -14,7 +14,6 @@ import Text.Blaze.Html.Renderer.String (renderHtml)
 import Text.Pandoc
 import Text.Pandoc.Walk (walk)
 import System.Directory
-import System.FilePath (takeDirectory)
 import System.Process
 import System.IO (hClose, hGetContents, hPutStr, hSetEncoding, localeEncoding)
 import System.IO.Error (isDoesNotExistError)
@@ -34,7 +33,7 @@ pandocBuilder ropt wopt f item =
 
 cache :: String -> String -> FilePath -> String
 cache code lang storePath = unsafePerformIO $ do
-  let pathStem = (takeDirectory . takeDirectory $ storePath) ++ "/pygments/"
+  let pathStem = storePath ++ "/pygments"
 
   _ <- createDirectoryIfMissing True pathStem
 
