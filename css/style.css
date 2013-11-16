@@ -22,7 +22,7 @@
     {
         font-family: 'Source Sans Pro', sans-serif;
         font-weight: 400;
-        color: #919499;
+        color: #6F7175;
     }
     
 
@@ -261,12 +261,12 @@
         
         header.style1 .byline
         {
-            color: #b1b4b9;
+            color: #6F7175;
         }
 
     code 
     {
-        background-color: #EEE;
+        background-color: #ccc;
         padding: 1px 5px;
     }
 
@@ -276,7 +276,19 @@
         margin-left: auto;
         margin-right: auto;
     }
+    
+    figure.code
+    {
+        margin-bottom: 1.5em;
+    }
 
+    .code-container
+    {
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
     figure.code figcaption
     {
         border: 1px solid #565656;

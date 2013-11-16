@@ -1,5 +1,13 @@
 .highlight .hll { background-color: #373b41 }
-.highlight  { background: #1d1f21; color: #c5c8c6 }
+pre {
+    overflow: scroll;
+    overflow-y: hidden;
+    display: block;
+    padding: 0.8em;
+    overflow-x: auto;
+    line-height: 1.45em;
+}
+.highlight  { background: #1d1f21; color: #c5c8c6; overflow-y: hidden; overflow-x: auto }
 .highlight .c { color: #969896 } /* Comment */
 .highlight .err { color: #cc6666 } /* Error */
 .highlight .k { color: #b294bb } /* Keyword */
