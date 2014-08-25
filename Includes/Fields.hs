@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Site.Fields (
+module Includes.Fields (
   postCtx,
   mathCtx
 ) where

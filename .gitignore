@@ -1,4 +1,5 @@
 *.swp
+site.exe
 site
 *.o
 *.hi

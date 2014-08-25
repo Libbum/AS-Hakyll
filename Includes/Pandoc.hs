@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-module Site.Pandoc (pandocHtml5Compiler) where
+module Includes.Pandoc (pandocHtml5Compiler) where
 
 import Control.Applicative ((<$>))
 import Control.Concurrent (forkIO)
