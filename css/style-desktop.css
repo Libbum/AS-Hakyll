@@ -331,6 +331,7 @@
 
     .wrapper-style2
     {
+        padding-top: 350px;
         background-image: url('../images/rightfl.png'), url('../images/bg.jpg');
         background-repeat: no-repeat, repeat;
         background-attachment: fixed, fixed;

@@ -38,7 +38,7 @@
 <body class="right-sidebar">
 
 <!-- Header Wrapper -->
-<div id="header-wrapper" class="wrapper">
+<div id="header-wrapper" class="wrapper head">
     <div class="container">
         <div class="row">
             <div class="12u">
@@ -70,6 +70,7 @@
         </div>
     </div>
 </div>
+
 <!-- /Header Wrapper -->
 <!-- Main Wrapper -->
 <div class="wrapper wrapper-style2">
@@ -116,6 +117,19 @@
     </div>
 </div>
 <!-- /Footer Wrapper -->
-
+<style type="text/css">
+    .headroom {position: fixed;top: 0;left: 0;right: 0;z-index:5;}
+    .headroom--unpinned {top: -300px; }
+    .headroom--pinned {top: -150px; }
+    .headroom--top {position:absolute;top:0}
+    .headroom--not-top.headroom--pinned { transition: top 0.2s ease-out; }
+</style>
+<script src="/js/headroom.min.js"></script>
+<script type="text/javascript">
+    var headerElement = document.querySelector(".head");
+    var headroom  = new Headroom(headerElement);
+    headroom.init();
+    headroom.offset = 200;
+</script> 
 </body>
 </html>

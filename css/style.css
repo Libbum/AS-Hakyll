@@ -228,6 +228,8 @@
     
     p, ul, ol, dl, table, blockquote, form
     {
+        font-size: 19px;
+        line-height: 31px;
         margin-bottom: 2em;
     }
     
