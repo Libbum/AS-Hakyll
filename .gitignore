@@ -4,6 +4,5 @@ site
 *.o
 *.hi
 _*
-posts/
 papers/
 drafts/
