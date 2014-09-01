@@ -12,7 +12,7 @@ import Includes.Pandoc
 main :: IO ()
 main = hakyllWith config $ do
 
-    match ("images/*" .||. "favicon.ico" .||. "js/*") $ do
+    match ("images/*" .||. "favicon.ico" .||. "js/*" .||. "papers/*") $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -20,7 +20,7 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
-    match (fromList ["about.rst", "contact.markdown"]) $ do
+    match "about.markdown" $ do
         route   $ setExtension "html"
         compile $ getResourceBody
             >>= pandocHtml5Compiler (storeDirectory config)
@@ -58,6 +58,19 @@ main = hakyllWith config $ do
             makeItem ""
                 >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
+                >>= relativizeUrls
+
+    create ["papers.html"] $ do
+        route idRoute
+        compile $ do
+            --TODO: Generate papers metadata
+            let papersCtx =
+                    constField "title" "Papers"            `mappend`
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/papers.html" papersCtx
+                >>= loadAndApplyTemplate "templates/default.html" papersCtx
                 >>= relativizeUrls
 
     tagsRules tags $ \tag pattern -> do
@@ -103,7 +116,7 @@ main = hakyllWith config $ do
 --------------------------------------------------------------------------------
 config :: Configuration
 config = defaultConfiguration
-        { deployCommand = "rsync -avz -e ssh ./_site/ Neophilus:www/axiomatic/hakyll" }
+        { deployCommand = "rsync -avz -e ssh ./_site/ Akasha:axiomatic/" }
 
 mostRecentPost :: Compiler (Item String)
 mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "index")

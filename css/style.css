@@ -469,6 +469,15 @@
                 background-color: #1f232b;
             }
 
+#cols2 {
+    -moz-column-count: 2;
+    -moz-column-gap: 50px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 50px;
+    column-count: 2;
+    column-gap: 50px;
+}
+
     ul.style1
     {
     }
@@ -802,3 +811,88 @@
                 {
                     color: #fff;
                 }
+
+
+/*********************************************************************************/
+/* Papers layout                                                                 */
+/*********************************************************************************/
+
+.abstract { display: none }
+
+.pub-list { padding:0 }
+
+h2.pub-header { font-size: 2em; }
+
+li.pub-item { display:block;margin-top:1em }
+
+.pub-block { display:inline-block;vertical-align:text-top }
+
+.pub-title { font-weight:bold }
+
+.pub-vol { font-weight:bold }
+
+.pub-journal { font-style:italic }
+
+.pub-links {font-size:90%;font-weight:600}
+
+
+/*********************************************************************************/
+/* Animation                                                                     */
+/*********************************************************************************/
+
+.animated {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}

@@ -255,6 +255,7 @@
     .is-pair-one
     {
         padding-right: 1.5em;
+        padding-bottom: 5em;
     }
 
     .is-pair-two
@@ -289,10 +290,16 @@
             width: 5em;
         }
         
-        .is-post-excerpt h3,
+        .is-post-excerpt h3
+        {
+            font-size:16pt;
+            line-height:23pt;
+        }
         .is-post-excerpt p
         {
-            margin-left: 7em;
+            font-size:13pt;
+            line-height:20pt;
+            margin-bottom: 20px;
         }
         
 /*********************************************************************************/
@@ -301,7 +308,7 @@
 
     .wrapper
     {
-        padding: 6em 0 9em 0;
+        padding-top: 6em;
     }
 
         .wrapper .title
@@ -536,7 +543,7 @@
 
     #main
     {
-        margin: 1em 0 1em 0;
+        margin-top: 1em;
     }
 
 
