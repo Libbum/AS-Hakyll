@@ -46,7 +46,7 @@
             letter-spacing: 0.075em;
             line-height: 1.5em;
         }
-        
+
         header.style1 .byline
         {
             display: block;
@@ -59,7 +59,7 @@
     form
     {
     }
-    
+
         form label
         {
             margin: 0.25em 0 0.25em 0;
@@ -73,7 +73,7 @@
         height: 4em;
         line-height: 4em;
     }
-    
+
         .button-big
         {
             font-size: 1em;
@@ -84,33 +84,33 @@
     {
         margin: 3em 0 0 0;
     }
-    
+
         form .actions
         {
             margin-top: 1em;
         }
-    
+
         .actions li
         {
             display: inline-block;
             margin: 0 0.75em 0 0.75em;
         }
-        
+
         .actions li:first-child
         {
             margin-left: 0;
         }
-        
+
         .actions li:last-child
         {
             margin-right: 0;
         }
-        
+
         .actions-centered
         {
             text-align: center;
         }
-        
+
     .feature-list
     {
     }
@@ -124,17 +124,17 @@
         {
             border-top: solid 1px #eee;
         }
-    
+
             .feature-list .row:first-child
             {
                 border-top: 0;
             }
-            
+
                 .feature-list .row:first-child section
                 {
                     padding-top: 0;
                 }
-            
+
             .feature-list .row:last-child
             {
             }
@@ -161,20 +161,20 @@
                 font-size: 32px;
                 top: 0.2em;
             }
-    
+
         .feature-list p
         {
             margin: 0 0 0 5em;
         }
-        
+
         .feature-list-small
         {
         }
-        
+
             .feature-list-small h3
             {
             }
-        
+
                 .feature-list-small h3:before
                 {
                     font-size: 24px;
@@ -183,7 +183,7 @@
                     height: 45px;
                     margin-right: 1em;
                 }
-                
+
             .feature-list-small p
             {
                 margin: 0 0 0 4em;
@@ -192,8 +192,8 @@
     .is
     {
     }
-   
-    .plate 
+
+    .plate
     {
         background: rgb(40,43,52);
         background: rgba(40,43,52,0.75);
@@ -202,7 +202,7 @@
         color: #ccc;
         padding: 1em;
     }
-    
+
     .plate h2
     {
         color: #ccc;
@@ -211,8 +211,9 @@
     .plate a
     {
         color: #fff;
+        position: relative;
     }
-    
+
     .is header
         {
             margin: 0 0 1.5em 0;
@@ -220,7 +221,6 @@
 
             .is header.style1
             {
-                position: relative;
                 margin: -0.5em 0 0 0;
                 padding-top: 0;
             }
@@ -246,9 +246,9 @@
             letter-spacing: 0.05em;
         }
 
-    .blurb 
+    .blurb
     {
-        -webkit-mask-image: -webkit-gradient(linear, left center, 
+        -webkit-mask-image: -webkit-gradient(linear, left center,
             left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
     }
 
@@ -262,18 +262,18 @@
     {
         padding-left: 1.5em;
     }
-    
+
     .is-triple-one
     {
         padding-right: 1.5em;
     }
-    
+
     .is-triple-two
     {
         padding-left: 0.75em;
         padding-right: 0.75em;
     }
-    
+
     .is-triple-three
     {
         padding-left: 1.5em;
@@ -282,14 +282,14 @@
     .is-post-excerpt
     {
     }
-    
+
         .is-post-excerpt .image-left
         {
             position: relative;
             top: 0.5em;
             width: 5em;
         }
-        
+
         .is-post-excerpt h3
         {
             font-size:16pt;
@@ -301,7 +301,7 @@
             line-height:20pt;
             margin-bottom: 20px;
         }
-        
+
 /*********************************************************************************/
 /* Wrappers                                                                      */
 /*********************************************************************************/
@@ -382,7 +382,7 @@
             font-size: 2em;
             letter-spacing: 0.25em;
         }
-        
+
         #logo .byline
         {
             margin: 1.25em 0 0 0;
@@ -424,7 +424,7 @@
             text-align: center;
             padding: 0 1.5em 0 1.5em;
         }
-        
+
             #nav > ul > li > a,
             #nav > ul > li > span
             {
@@ -444,7 +444,7 @@
                 transition: all .25s ease-in-out;
                 outline: 0;
             }
-            
+
             #nav > ul > li:hover > a,
             #nav > ul > li.active > a,
             #nav > ul > li.active > span
@@ -466,8 +466,8 @@
         {
             font-size: 1.5em;
             letter-spacing: 0.075em;
-        }    
-        
+        }
+
         #intro .style2
         {
             font-size: 2.75em;
@@ -476,7 +476,7 @@
             padding: 1em 0 1em 0;
             margin-bottom: 1em;
         }
-        
+
         #intro .style3
         {
             font-size: 1.1em;
@@ -497,7 +497,7 @@
         {
             padding-bottom: 5em;
         }
-        
+
         #features .actions
         {
             margin-top: 5em;
@@ -526,12 +526,12 @@
         {
             padding-right: 2em;
         }
-        
+
         #highlights .highlight-two
         {
             padding: 0 1em 0 1em;
         }
-        
+
         #highlights .highlight-three
         {
             padding-left: 2em;
@@ -575,7 +575,7 @@
     #footer
     {
     }
-    
+
     #footer-wrapper
     {
         background-image: url('../images/rightflinv.png'), url('../images/overlay.png');
@@ -589,7 +589,7 @@
 /* Copyright                                                                     */
 /*********************************************************************************/
 
-    
+
         #copyright span
         {
             padding: 1.5em 4em 1.5em 4em;
