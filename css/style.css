@@ -24,14 +24,14 @@
         font-weight: 400;
         color: #6F7175;
     }
-    
+
 
     h1,h2,h3,h4,h5,h6
     {
         font-weight: 700;
         color: #484d55;
     }
-    
+
     h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
     {
         color: inherit;
@@ -48,7 +48,7 @@
         -ms-transition: color .25s ease-in-out;
         transition: color .25s ease-in-out;
     }
-    
+
         a:hover
         {
             text-decoration: none;
@@ -59,77 +59,77 @@
         font-weight: 700;
         color: #484d55;
     }
-    
+
     blockquote
     {
         border-left: solid 0.5em #ddd;
         padding: 1em 0 1em 2em;
         font-style: italic;
     }
-    
+
     em, i
     {
         font-style: italic;
     }
-    
+
     hr
     {
         border: 0;
-        border-top: solid 1px #ddd;
+        border-top: solid 1px #000;
     }
-    
+
     sub
     {
         position: relative;
         top: 0.5em;
         font-size: 0.8em;
     }
-    
+
     sup
     {
         position: relative;
         top: -0.5em;
         font-size: 0.8em;
     }
-    
+
     table
     {
         width: 100%;
     }
-    
+
         table.style1
         {
             width: 100%;
         }
-        
+
             table.style1 tbody tr:nth-child(2n+2)
             {
                 background: #f4f4f4;
             }
-            
+
             table.style1 td
             {
                 padding: 0.5em 1em 0.5em 1em;
             }
-            
+
             table.style1 th
             {
                 text-align: left;
                 font-weight: 400;
                 padding: 0.5em 1em 0.5em 1em;
             }
-        
+
             table.style1 thead
             {
                 background: #484d55;
                 color: #fff;
             }
-            
+
             table.style1 tfoot
             {
                 background: #eee;
             }
-            
+
             table.style1 tbody
             {
             }
@@ -137,13 +137,13 @@
     form
     {
     }
-    
+
         form label
         {
             display: block;
             color: #484d55;
         }
-    
+
         form input.text,
         form select,
         form textarea
@@ -175,7 +175,7 @@
             {
                 background: #f8f8f8;
             }
-            
+
             form textarea
             {
                 min-height: 12em;
@@ -225,20 +225,20 @@
     {
         clear: both;
     }
-    
+
     p, ul, ol, dl, table, blockquote, form
     {
         font-size: 19px;
         line-height: 31px;
         margin-bottom: 2em;
     }
-    
+
     section,
     article
     {
         margin-bottom: 3em;
     }
-    
+
     section > :last-child,
     article > :last-child
     {
@@ -250,7 +250,7 @@
     {
         margin-bottom: 0;
     }
-    
+
     header.style1
     {
         text-align: center;
@@ -260,25 +260,25 @@
         {
             font-weight: 700;
         }
-        
+
         header.style1 .byline
         {
             color: #6F7175;
         }
 
-    code 
+    code
     {
         background-color: #ccc;
         padding: 1px 5px;
     }
 
-    figure img 
+    figure img
     {
         display: block;
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     figure.code
     {
         margin-bottom: 1.5em;
@@ -316,7 +316,7 @@
         color: #474747;
     }
 
-    .math 
+    .math
     {
         line-height: 140%;
         color: #222;
@@ -344,7 +344,7 @@
         display: block;
         width: 100%;
     }
-   
+
     .rounded-black-image {
         display: inline-block;
         border: solid 1px #000;
@@ -380,7 +380,7 @@
     {
         float: left;
     }
-    
+
     .image-centered
     {
         display: block;
@@ -392,14 +392,14 @@
             margin: 0 auto;
             width: auto;
         }
-        
+
     .image-featured
     {
         display: block;
         width: 100%;
         margin: 0 0 2em 0;
     }
-    
+
     .button
     {
         display: inline-block;
@@ -430,7 +430,7 @@
             {
                 background-color: #f98780;
             }
-            
+
             .button-style1:active
             {
                 background-color: #d96760;
@@ -442,12 +442,12 @@
             color: #606167;
             box-shadow: inset 0px 0px 2px 0px #a0a1a7;
         }
-        
+
             .button-style2:hover
             {
                 box-shadow: inset 0px 0px 2px 0px #606167;
             }
-        
+
             .button-style2:active
             {
                 box-shadow: inset 0px 0px 2px 0px #202127;
@@ -463,7 +463,7 @@
             {
                 background-color: #3f434b;
             }
-            
+
             .button-style3:active
             {
                 background-color: #1f232b;
@@ -481,47 +481,47 @@
     ul.style1
     {
     }
-    
+
     ul.style2
     {
     }
-    
+
         ul.style2 li
         {
             border-top: solid 1px #eee;
             padding: 1.5em 0 0 0;
             margin: 1.5em 0 0 0;
         }
-        
+
         ul.style2 li:first-child
         {
             border-top: 0;
             padding-top: 0;
             margin-top: 0;
         }
-    
+
     ul.style3
     {
     }
-    
+
         ul.style3 li
         {
             border-top: solid 1px #eee;
             padding: 0.5em 0 0 0;
             margin: 0.5em 0 0 0;
         }
-        
+
         ul.style3 li:first-child
         {
             border-top: 0;
             padding-top: 0;
             margin-top: 0;
         }
-    
+
     ol.style1
     {
     }
-        
+
     .actions
     {
     }
@@ -534,7 +534,7 @@
         {
             color: #e97770 !important;
         }
-        
+
             .feature-list h3:before
             {
                 position: relative;
@@ -565,7 +565,7 @@
             font-weight: 700;
             letter-spacing: 0.25em;
         }
-        
+
         .wrapper .title:before
         {
             content: '';
@@ -576,7 +576,7 @@
             height: 38px;
             background: url('../images/shadow.png');
         }
-        
+
         .wrapper .title:after
         {
             content: '';
@@ -601,7 +601,7 @@
             letter-spacing: 0.25em;
         }
 
-        .sidedate 
+        .sidedate
         {
             text-transform: uppercase;
             text-decoration: underline;
@@ -618,7 +618,7 @@
             height: 100%;
             background: url('../images/overlay.png');
         }
-    
+
     #footer-wrapper
     {
         background-color: #282b34;
@@ -631,20 +631,20 @@
             color: #fff;
         }
 
-    
+
     .wrapper-style1
     {
         background: #e97770 url('../images/overlay.png');
         color: #eee;
         color: rgba(255,255,255,0.75);
     }
-    
+
         .wrapper-style1 .title
         {
             background: #e97770 url('../images/overlay.png');
             color: #fff;
         }
-    
+
         .wrapper-style1 h1,
         .wrapper-style1 h2,
         .wrapper-style1 h3,
@@ -657,31 +657,31 @@
         {
             color: #fff;
         }
-    
-    
+
+
         .wrapper-style2 .title
         {
             background: #fff;
             color: #484d55;
         }
-    
+
     .wrapper-style3
     {
         background: #f3f3f3 url('../images/overlay.png');
     }
-    
+
         .wrapper-style3 .title
         {
             background: #f3f3f3 url('../images/overlay.png');
             color: #484d55;
         }
-        
+
         .wrapper-style3 .image
         {
             border: solid 10px #fff;
         }
 
-        .blurb 
+        .blurb
         {
             height: 450px;
             overflow: hidden;
@@ -695,14 +695,14 @@
     #logo
     {
     }
-    
+
         #logo h1
         {
             font-weight: 900;
             text-transform: uppercase;
             color: #fff;
         }
-        
+
         #logo .byline
         {
             color: #eee;
@@ -717,11 +717,11 @@
     #intro
     {
     }
-    
+
         #intro .style1
         {
-        }    
-        
+        }
+
         #intro .style2
         {
             font-weight: 700;
@@ -729,17 +729,17 @@
             border-radius: 0.35em;
             box-shadow: inset 0px 0px 1px 1px rgba(255,255,255,0.25);
         }
-        
+
             #intro .style2 a
             {
                 color: inherit;
                 text-decoration: none;
             }
-        
+
         #intro .style3
         {
         }
-        
+
 /*********************************************************************************/
 /* Tags                                                                          */
 /*********************************************************************************/
@@ -755,7 +755,7 @@
             padding: 0.5em 1em 0.5em 1em;
             text-align: center;
         }
-        
+
         #tags .left
         {
             float: left;
@@ -777,7 +777,7 @@
         {
             text-align: center;
         }
-        
+
             #highlights .highlight h3
             {
                 color: #e97770;
@@ -786,13 +786,13 @@
 /*********************************************************************************/
 /* Copyright                                                                     */
 /*********************************************************************************/
-            
+
     #copyright
     {
         text-align: center;
         margin: 1.5em 0 1.5em 0;
     }
-    
+
         #copyright span
         {
             display: inline-block;
@@ -801,12 +801,12 @@
             color: #aaa;
             color: rgba(255,255,255,0.25);
         }
-        
+
             #copyright span a
             {
                 color: inherit;
             }
-            
+
                 #copyright span a:hover
                 {
                     color: #fff;
