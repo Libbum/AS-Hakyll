@@ -1,7 +1,7 @@
 ---
 title: Using datatool and TikZ to generate figures from data
 byline: Or just use print screen and MS Paint, you know, what ever is easiest...
-tags: Latex, TikZ
+tags: LaTeX, TikZ
 mathjax: on
 ---
 
@@ -12,7 +12,7 @@ If you're not already using [PGF and Ti*k*Z](http://sourceforge.net/projects/pgf
 Building static diagrams and graphs (adding [PGFPlots](http://pgfplots.sourceforge.net/) into the mix) is fine, but I find myself constantly wanting decent plots from real data, that don't fit the usual line/surface paradigm. The [datatool](http://www.ctan.org/pkg/datatool) package is perfect for this kind of work.
 
 
-Something I'm working on currently is the classification of voids in amorphous solids, voronoi networks seem to be a great way of expressing the arrangement of atoms in these systems. The following example uses an amorphous aluminium oxide and is represented in 2D so as not to complicate the problem too much. 
+Something I'm working on currently is the classification of voids in amorphous solids, voronoi networks seem to be a great way of expressing the arrangement of atoms in these systems. The following example uses an amorphous aluminium oxide and is represented in 2D so as not to complicate the problem too much.
 
 To simplify things further, I've separated my input data into three csv files that look something like this:
 
@@ -54,13 +54,13 @@ computes the bounds of the (x,y) data, which I use to draw a bounding box;
 \DTLgetvalueforkey{\oneX}{x}{data}{idx}{\one}
 ```
 
-grabs the location of `x` from `data` at `idx`, where that index value equals `\one` from another data set. 
+grabs the location of `x` from `data` at `idx`, where that index value equals `\one` from another data set.
 
 If you include all of this with some Ti*k*Z trickery, it's fairly simple to generate a number of figures like this incredibly fast with a myriad of different data sets.
 
 ![Voronoi diagram of amorphous aluminium oxide](/images/voronoi.png)
 
-The entire code-set for this project is below. The in-line comments expand on the syntax I outline above and should answer most questions you may have about each functions purpose. 
+The entire code-set for this project is below. The in-line comments expand on the syntax I outline above and should answer most questions you may have about each functions purpose.
 
 <a name="code" />
 
