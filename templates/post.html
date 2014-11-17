@@ -10,6 +10,21 @@
 
     <div class="info">Posted on $date$</div>
     $body$
+
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'axiomatic';
+        var disqus_identifier = '$url$';
+        var disqus_url = 'https://axiomatic.neophilus.net' + '$url$';
+        var disqus_title = '$title$';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=axiomatic">comments powered by Disqus.</a></noscript>
+
     <div id="tags"><span><div class="left">$if(nextPage)$<a href="$nextPage$">« Next</a>$else$ &nbsp; $endif$</div> &nbsp; $if(tags)$ $tags$ $endif$ &nbsp; <div class="right">$if(previousPage)$<a href="$previousPage$">Previous »</a>$else$ &nbsp; $endif$</div></span></div>
 </article>
 </div>
