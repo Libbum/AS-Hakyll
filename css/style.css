@@ -555,7 +555,7 @@
 }
 canvas{
   position:absolute;
-  top: 300px;
+  top: 0;
   left: 0;
 	vertical-align:bottom;
 }

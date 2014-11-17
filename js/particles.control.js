@@ -2,13 +2,13 @@ particlesJS('particles-js', {
     particles: {
         color: '#777',
         shape: 'circle',
-        opacity: 0.4,
+        opacity: 0.5,
         size: 2.5,
         size_random: true,
-        nb: 150,
+        nb: 100,
         line_linked: {
             enable_auto: true,
-            distance: 250,
+            distance: 300,
             color: '#777',
             opacity: 0.4,
             width: 1,
@@ -30,5 +30,5 @@ particlesJS('particles-js', {
         },
         mode: 'grab'
     },
-    retina_detect: true
+    retina_detect: false
 });
