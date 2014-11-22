@@ -370,10 +370,11 @@
         position: absolute;
         height: 5em;
         top: 25%;
-        left: 0;
-        width: 100%;
+        left: 50%;
+        width: 540px;
         text-align: center;
         margin-top: -0.5em;
+        margin-left: -270px;
     }
 
         #logo h1
@@ -399,9 +400,10 @@
         position: absolute;
         display: block;
         top: 11em;
-        left: 0;
-        width: 100%;
+        left: 50%;
+        width: 642px;
         text-align: center;
+        margin-left: -321px;
     }
 
         #nav > ul > li > ul
