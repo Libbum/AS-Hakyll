@@ -47,7 +47,7 @@
                 <!-- Header -->
                     <!-- Logo -->
                     <div id="logo">
-                        <h1><a href="#">Axiomatic Semantics</a></h1>
+                        <h1><a href="https://axiomatic.neophilus.net">Axiomatic Semantics</a></h1>
                         <span class="byline">Brute force solutions with proofs by intimidation</span>
                     </div>
                     <!-- /Logo -->
@@ -114,8 +114,8 @@
     </div>
 </div>
 <!-- /Footer Wrapper -->
-<script src="/js/particles.min.js"></script>
-<script src="/js/particles.control.js"></script>
+<script src="/js/particles.min.js" name="particles"></script>
+<script src="/js/particles.control.js" name="particles"></script>
 <style type="text/css">
     .headroom {position: fixed;top: 0;left: 0;right: 0;z-index:5;}
     .headroom--unpinned {top: -300px; }
@@ -125,10 +125,12 @@
 </style>
 <script src="/js/headroom.min.js"></script>
 <script type="text/javascript">
-    var headerElement = document.querySelector(".head");
-    var headroom  = new Headroom(headerElement);
-    headroom.init();
-    headroom.offset = 200;
+    if (skel.isActive('desktop')) {
+        var headerElement = document.querySelector(".head");
+        var headroom  = new Headroom(headerElement);
+        headroom.init();
+        headroom.offset = 200;
+    }
 </script>
 </body>
 </html>
