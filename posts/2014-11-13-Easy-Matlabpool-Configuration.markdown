@@ -6,7 +6,7 @@ tags: Matlab
 
 The new `parpool` option for `Matlab 2014b` is depreciating `matlabpool`, merging the ideas of parallelisation locally and remotely in to one.
 Now, the same code can be easily sent off to a large, remote cluster or ran over a few more cores on your own machine without much hassle.
-Another usefull feature is the fact that idle pools will close down after inactivity, allowing you to be lazy with your implementations, while at the same time giving the possiblity of efficiency if you require the pool again inadvertantly.<!--BLURB-->
+Another usefull feature is the fact that idle pools will close down after inactivity, allowing you to be lazy with your implementations, while at the same time giving the possiblity of efficiency if you require the pool again <!--BLURB--> inadvertantly.
 
 A caveat that I find with this implementation is the freedom to alter the pool size dynamically.
 Most may not find this an issue, and are happy with setting the pool to 8 and be done; but if writing large amounts of info to disk constantly is your jam this is seldom the optimal choice.
