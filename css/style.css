@@ -217,16 +217,6 @@
                 border: 0;
             }
 
-    .nobr
-    {
-        white-space: nowrap;
-    }
-
-    br.clear
-    {
-        clear: both;
-    }
-
     p, ul, ol, dl, table, blockquote, form
     {
         font-size: 19px;
@@ -328,78 +318,6 @@
         display: inline-block;
     }
 
-   .rounded-white-image {
-        display: inline-block;
-        border: solid 1px #aaa;
-        overflow: hidden;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        -webkit-box-shadow: 0 1px 3px rgba(255, 255, 255, .5);
-        -moz-box-shadow: 0 1px 3px rgba(255, 255, 255, .5);
-        box-shadow: 0 1px 3px rgba(255, 255, 255, .5);
-    }
-
-    .rounded-white-image img
-    {
-        display: block;
-        width: 100%;
-    }
-
-    .rounded-black-image {
-        display: inline-block;
-        border: solid 1px #000;
-        overflow: hidden;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
-        -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, .5);
-    }
-
-    .rounded-black-image img
-    {
-        display: block;
-        width: 100%;
-    }
-        .image img
-        .image img
-        {
-            display: block;
-            width: 100%;
-        }
-
-    .image-full
-    {
-        display: block;
-        width: 100%;
-        margin: 0 0 2em 0;
-    }
-
-    .image-left
-    {
-        float: left;
-    }
-
-    .image-centered
-    {
-        display: block;
-        margin: 0 0 2em 0;
-    }
-
-        .image-centered img
-        {
-            margin: 0 auto;
-            width: auto;
-        }
-
-    .image-featured
-    {
-        display: block;
-        width: 100%;
-        margin: 0 0 2em 0;
-    }
 
     .button
     {
@@ -437,39 +355,6 @@
                 background-color: #d96760;
             }
 
-        .button-style2
-        {
-            background: none;
-            color: #606167;
-            box-shadow: inset 0px 0px 2px 0px #a0a1a7;
-        }
-
-            .button-style2:hover
-            {
-                box-shadow: inset 0px 0px 2px 0px #606167;
-            }
-
-            .button-style2:active
-            {
-                box-shadow: inset 0px 0px 2px 0px #202127;
-            }
-
-        .button-style3
-        {
-            background: #2f333b url('../images/overlay.png');
-            color: #fff;
-        }
-
-            .button-style3:hover
-            {
-                background-color: #3f434b;
-            }
-
-            .button-style3:active
-            {
-                background-color: #1f232b;
-            }
-
 #cols2 {
     -moz-column-count: 2;
     -moz-column-gap: 50px;
@@ -479,72 +364,6 @@
     column-gap: 50px;
 }
 
-    ul.style1
-    {
-    }
-
-    ul.style2
-    {
-    }
-
-        ul.style2 li
-        {
-            border-top: solid 1px #eee;
-            padding: 1.5em 0 0 0;
-            margin: 1.5em 0 0 0;
-        }
-
-        ul.style2 li:first-child
-        {
-            border-top: 0;
-            padding-top: 0;
-            margin-top: 0;
-        }
-
-    ul.style3
-    {
-    }
-
-        ul.style3 li
-        {
-            border-top: solid 1px #eee;
-            padding: 0.5em 0 0 0;
-            margin: 0.5em 0 0 0;
-        }
-
-        ul.style3 li:first-child
-        {
-            border-top: 0;
-            padding-top: 0;
-            margin-top: 0;
-        }
-
-    ol.style1
-    {
-    }
-
-    .actions
-    {
-    }
-
-    .feature-list
-    {
-    }
-
-        .feature-list h3
-        {
-            color: #e97770 !important;
-        }
-
-            .feature-list h3:before
-            {
-                position: relative;
-                display: inline-block;
-                color: #fff;
-                background: #2f333b url('../images/overlay.png');
-                border-radius: 1em;
-                text-align: center;
-            }
 
 /*********************************************************************************/
 /* Wrappers                                                                      */
@@ -563,45 +382,6 @@ canvas{
     {
         position: relative;
     }
-
-        .wrapper .title
-        {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            text-align: center;
-            text-transform: uppercase;
-            display: block;
-            font-weight: 700;
-            letter-spacing: 0.25em;
-        }
-
-        .wrapper .title:before
-        {
-            content: '';
-            position: absolute;
-            bottom: -38px;
-            left: -35px;
-            width: 35px;
-            height: 38px;
-            background: url('../images/shadow.png');
-        }
-
-        .wrapper .title:after
-        {
-            content: '';
-            position: absolute;
-            bottom: -38px;
-            right: -35px;
-            width: 35px;
-            height: 38px;
-            background: url('../images/shadow.png');
-            -moz-transform: scaleX(-1);
-            -webkit-transform: scaleX(-1);
-            -o-transform: scaleX(-1);
-            -ms-transform: scaleX(-1);
-            transform: scaleX(-1);
-        }
 
         .wrapper .info
         {
@@ -641,56 +421,6 @@ canvas{
             color: #fff;
         }
 
-
-    .wrapper-style1
-    {
-        background: #e97770 url('../images/overlay.png');
-        color: #eee;
-        color: rgba(255,255,255,0.75);
-    }
-
-        .wrapper-style1 .title
-        {
-            background: #e97770 url('../images/overlay.png');
-            color: #fff;
-        }
-
-        .wrapper-style1 h1,
-        .wrapper-style1 h2,
-        .wrapper-style1 h3,
-        .wrapper-style1 h4,
-        .wrapper-style1 h5,
-        .wrapper-style1 h6,
-        .wrapper-style1 strong,
-        .wrapper-style1 b,
-        .wrapper-style1 a
-        {
-            color: #fff;
-        }
-
-
-        .wrapper-style2 .title
-        {
-            background: #fff;
-            color: #484d55;
-        }
-
-    .wrapper-style3
-    {
-        background: #f3f3f3 url('../images/overlay.png');
-    }
-
-        .wrapper-style3 .title
-        {
-            background: #f3f3f3 url('../images/overlay.png');
-            color: #484d55;
-        }
-
-        .wrapper-style3 .image
-        {
-            border: solid 10px #fff;
-        }
-
         .blurb
         {
             height: 450px;
@@ -721,35 +451,6 @@ canvas{
             text-transform: uppercase;
         }
 
-/*********************************************************************************/
-/* Intro                                                                         */
-/*********************************************************************************/
-
-    #intro
-    {
-    }
-
-        #intro .style1
-        {
-        }
-
-        #intro .style2
-        {
-            font-weight: 700;
-            color: #fff;
-            border-radius: 0.35em;
-            box-shadow: inset 0px 0px 1px 1px rgba(255,255,255,0.25);
-        }
-
-            #intro .style2 a
-            {
-                color: inherit;
-                text-decoration: none;
-            }
-
-        #intro .style3
-        {
-        }
 
 /*********************************************************************************/
 /* Tags                                                                          */
@@ -776,23 +477,6 @@ canvas{
         {
             float: right;
         }
-
-/*********************************************************************************/
-/* Highlights                                                                    */
-/*********************************************************************************/
-    #highlights
-    {
-    }
-
-        #highlights .highlight
-        {
-            text-align: center;
-        }
-
-            #highlights .highlight h3
-            {
-                color: #e97770;
-            }
 
 /*********************************************************************************/
 /* Copyright                                                                     */
