@@ -79,10 +79,8 @@
 
                 <!-- Main -->
                 <div id="main">
-                    <div>
-                        <div class="row">
-                            $body$
-                        </div>
+                    <div class="row">
+                        $body$
                     </div>
                 </div>
                 <!-- /Main -->
@@ -128,7 +126,7 @@
 </style>
 <script src="/js/headroom.min.js"></script>
 <script type="text/javascript">
-    if (skel.isActive('desktop')) {
+    if ((skel.isActive('desktop')) && (!skel.isActive('1000px'))) {
         var headerElement = document.querySelector(".head");
         var headroom  = new Headroom(headerElement);
         headroom.init();

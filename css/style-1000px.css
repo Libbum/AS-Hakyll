@@ -18,12 +18,22 @@
 	body
 	{
 		min-width: 960px;
+    height: 100%;
+    background-image: url('../images/bg.jpg');
+    background-repeat: repeat;
+    background-position: top left;
 	}
 
     html
     {
         background-color: #282b34;
+        height: 100%;
     }
+
+.thowidth
+{
+  margin-right: -10em;
+}
 
 /*********************************************************************************/
 /* Wrappers                                                                      */
@@ -41,22 +51,18 @@
 	#header-wrapper
 	{
 		height: 300px !important;
-        background-image: url('../images/rightfl1000inv.png'), url('../images/banner.jpg');
-        background-repeat: no-repeat, repeat;
-        background-size: auto, cover;
-        background-position: -webkit-calc(50% + 350px) top, center center;
-        background-position: -moz-calc(50% + 350px) top, center center;
-        background-position: calc(50% + 350px) top, center center;
+        background-image: url('../images/banner.jpg');
+        background-repeat: repeat;
+        background-size: cover;
+        background-position: center center;
         padding: 0;
 	}
 
     .wrapper-style2
     {
-        background-image: url('../images/rightfl1000.png'), url('../images/bg.jpg');
-        background-repeat: no-repeat, repeat;
-        background-position: -webkit-calc(50% + 350px) top, top left;
-        background-position: -moz-calc(50% + 350px) top, top left;
-        background-position: calc(50% + 350px) top, top left;
+        background-image: url('../images/bg.jpg');
+        background-repeat: repeat;
+        background-position: top left;
     }
 	#intro-wrapper
 	{
@@ -67,6 +73,9 @@
     {
         background-image: url('../images/overlay.png');
         background-repeat: repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        height: 106px;
     }
 /*********************************************************************************/
 /* Header                                                                        */
@@ -85,7 +94,7 @@
 	{
 		margin-top: -0.5em !important;
 	}
-	
+
 		#logo h1
 		{
 			font-size: 1.75em;
@@ -103,14 +112,14 @@
 		{
 			font-size: 1.25em;
 		}
-	
+
 		#intro .style2
 		{
 			font-size: 2.25em;
 		}
 
 
-    .plate 
+    .plate
     {
         background: rgb(40,43,52);
         background: rgba(40,43,52,0.75);
@@ -119,7 +128,7 @@
         color: #ccc;
         padding: 1em;
     }
-    
+
     .plate h2
     {
         color: #ccc;
@@ -129,7 +138,7 @@
     {
         color: #fff;
     }
-    
+
             .is header.style2
             {
                 margin: 0 0 1.5em 0;

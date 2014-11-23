@@ -1,3 +1,7 @@
+var inter = true;
+if (skel.isActive('1000px')) {
+  inter = false;
+}
 if (skel.isActive('desktop')) {
   particlesJS('particles-js', {
       particles: {
@@ -25,7 +29,7 @@ if (skel.isActive('desktop')) {
           }
       },
       interactivity: {
-          enable: true,
+          enable: inter,
           mouse: {
               distance: 200
           },
