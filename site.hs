@@ -74,7 +74,7 @@ main = hakyllWith config $ do
                 >>= relativizeUrls
 
     tagsRules tags $ \tag pattern -> do
-        let tagCtx = constField "title" ("Posts tagged as " ++ tag) `mappend` defaultContext
+        let tagCtx = constField "title" ("Posts tagged with " ++ tag) `mappend` defaultContext
 
         route idRoute
         compile $ do
