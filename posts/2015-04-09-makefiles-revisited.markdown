@@ -51,14 +51,14 @@ Here's what I came up with on a train to Bendigo with two random obnoxious child
     distclean: clean
 ```
 
-There are a few interesting things in here that weren't obvious to me at first. For instance the wildcard property allows a list of some in put file type to be made into an output file of the same name. The target `%.pdf: %.tex` says that all output pdf files will require a corresponding tex file. With my particular case this isn't very helpful as I'd like only some tex files rendered to pdf using one method and the rest rendered with a completely different method. Another question I had was "What's the best way to separate the __pdflatex__ and __xelatex__ runs?"
+There are a few interesting things in here that weren't obvious to me at first. For instance the wildcard property allows a list of some input file type to be made into an output file of the same name. The target `%.pdf: %.tex` says that all output pdf files will require a corresponding tex file. With my particular case this isn't very helpful as I'd like only some tex files rendered to pdf using one method and the rest rendered with a completely different method. Another question I had was "What's the best way to separate the __pdflatex__ and __xelatex__ runs?"
 
 The second issue could have just been two lists that would need to be updated every time a new figure was added, but that seemed to be a little inefficient and defeat the purpose of the makefiles' automation. The solution comes from this line:
 
 ``` makefile
     $(filter-out $(PSOURCES), $(wildcard *.tex))
 ```
-which takes the list `$(wildcard *.tex)` and filters (removes) any matches from `$(PSOURCES)`. The `wildcard` command is necessary here to identify this list as iteratable for the `%.tex` target later on. As the sources for the __pdflatex__ run are far fewer than those needing the default __xelatex__ treatment, it's much easier to filter the exceptions at this juncture. New all new files that don't require special treatment also don't require any thought when building them.
+which takes the list `$(wildcard *.tex)` and filters (removes) any matches from `$(PSOURCES)`. The `wildcard` command is necessary here to identify this list as iteratable for the `%.tex` target later on. As the sources for the __pdflatex__ run are far fewer than those needing the default __xelatex__ treatment, it's much easier to filter the exceptions at this juncture. Now all new files that don't require special treatment also don't require any thought when building them.
 
 Separating the two build types became a bit more of a hassle. Initially, I'd implemented something like
 
@@ -84,6 +84,6 @@ Later, back in civilisation, I pulled up the __make__ documentation and found ou
 
 > A __conditional__ causes part of a makefile to be obeyed or ignored depending on the values of variables. Conditionals can compare the value of one variable to another, or the value of a variable to a constant string. Conditionals control what make actually "sees" in the makefile, so they cannot be used to control shell commands at the time of execution.
 
-In other words, a first pass of the file will test the `ifeq` condition, then choose that option for the second (and final) pass. When the second pass meets the wildcard expansion it just inserts whatever commands the first pass sends it and that's all she wrote. So the solution I required here was to export the problem to the shell each wildcard expansion, test the name of the current tex file and only then invoke the correct compile tool.
+In other words, a first pass of the file will test the `ifeq` condition, then choose that option for the second (and final) pass. When the second pass meets the wildcard expansion it just inserts whatever commands the first pass sends it and that's all she wrote. So the solution I required here was to export the problem to the shell each wildcard expansion, test the name of the current .tex file and only then invoke the correct compile tool.
 
 All in all, this file does quite a good job. I haven't seen many people discussing their figure build chain online, so if you have an interesting way of making your figures get in contact - I'd be interested to know what you do.
