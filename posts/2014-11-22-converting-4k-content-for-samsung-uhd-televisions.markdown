@@ -4,7 +4,7 @@ byline: That is, until the Samsung firmware actually supports their own containe
 tags: Video, 4K
 ---
 
-Early adoption of new technologies is usually mired by complications, but what's been shitting me lately is the trend manufacturers seem to have of pushing tech to market that doesn't even support the main draw card of the product. I purchased a Samsung UA55F9000 UHD TV in December 2013: the month they were released, solely for the 4k capability. Fast forward a year later and I'm still fighting with the upper echelons of Samsung tech support concerning the absolute necessity of being able to use my 4k TV to play 4k content.
+Early adoption of new technologies is usually mired by complications, but what's been shitting me lately is the trend manufacturers seem to have of pushing tech to market that doesn't even support the main draw card of the product. I purchased a Samsung UA55F9000 UHD TV in December 2013: the month they were released, solely for the 4k capability. Fast forward a year later and I'm still fighting with the upper echelons of Samsung tech support concerning the absolute necessity of being able to use my 4k TV to play 4k <!--BLURB--> content.
 
 You see, the manual states the TV will play a `.S4ud` file: essentially a `H.264` video and an `AC3` audio stream multiplexed into a `TS` container. No firmware update since the TVs manufacture has actually allowed this. A second possibility is to use QFHD - four separate HD streams that are then joined together to yield a 4K stream. After quite a conversation with Samsung tech support it was elucidated that this is actually happening in-store when you see these TVs in action with those amazing demos.
 
