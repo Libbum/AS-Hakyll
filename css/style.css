@@ -507,6 +507,14 @@ canvas{
                     color: #fff;
                 }
 
+/* About Me */
+.bio {
+  float: left;
+  margin-right: 50px;
+}
+.multiple-borders {
+  box-shadow: 0px 0px 0px 5px #000, 0px 0px 0px 10px #fff;
+}
 
 /*********************************************************************************/
 /* Papers layout                                                                 */
