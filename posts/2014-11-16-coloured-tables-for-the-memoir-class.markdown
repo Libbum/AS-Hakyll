@@ -2,10 +2,9 @@
 title: Coloured Tables for the Memoir Class
 byline: So long as that colour isn't yellow. I hate yellow.
 tags: LaTeX
-mathjax: on
 ---
 
-If you're a fan of $\LaTeX$ typography, you may have come across the [Motion Mountain](http://www.motionmountain.net/) set of physics textbooks.
+If you're a fan of **LaTeX** typography, you may have come across the [Motion Mountain](http://www.motionmountain.net/) set of physics textbooks.
 This long term project has its own class file, which has been tweaked and honed over many years, has seen many of its pages grace many typography showcases (not to mention commercial successes and other recognitions).
 One particular stylistic choice that piqued my interest was the use of coloured rules inside the `\table{}` environment.
 

@@ -12,7 +12,7 @@ import Includes.Pandoc
 main :: IO ()
 main = hakyllWith config $ do
 
-    match ("images/*" .||. "favicon.ico" .||. "js/*" .||. "papers/*") $ do
+    match ("images/*" .||. "favicon.ico" .||. "js/*" .||. "papers/*" .||. "css/fonts/*") $ do
         route   idRoute
         compile copyFileCompiler
 

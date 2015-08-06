@@ -14,8 +14,8 @@ postCtx = dateField "date" "%B %e, %Y" `mappend` defaultContext
 
 
 mathCtx :: Context a
-mathCtx = field "mathjax" $ \item -> do
+mathCtx = field "katex" $ \item -> do
     metadata <- getMetadata $ itemIdentifier item
-    return $ if "mathjax" `M.member` metadata
-                  then "<script type=\"text/javascript\" src=\"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML\"></script>"
+    return $ if "katex" `M.member` metadata
+                  then "<link rel=\"stylesheet\" href=\"/css/katex.min.css\" /><script type=\"text/javascript\" src=\"/js/katex.min.js\"></script><script src=\"/js/auto-render.min.js\"></script>"
                   else ""

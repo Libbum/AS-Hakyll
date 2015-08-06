@@ -2,10 +2,9 @@
 title: Using datatool and TikZ to generate figures from data
 byline: Or just use print screen and MS Paint, you know, what ever is easiest...
 tags: LaTeX, TikZ
-mathjax: on
 ---
 
-If you're not already using [PGF and Ti*k*Z](http://sourceforge.net/projects/pgf/) for figures in your $\LaTeX$ documents, I suggest you take a few evenings and get acquainted with a number of [examples](http://texample.net/tikz/), so you can grasp the magnitude of its' capability - you certainly won't be disappointed.
+If you're not already using [PGF and Ti*k*Z](http://sourceforge.net/projects/pgf/) for figures in your **LaTeX** documents, I suggest you take a few evenings and get acquainted with a number of [examples](http://texample.net/tikz/), so you can grasp the magnitude of its' capability - you certainly won't be disappointed.
 
 <!--BLURB-->
 
