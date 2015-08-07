@@ -26,10 +26,10 @@ Fast forward a year and __KaTeX__ has matured immensely, and is currently at v0.
 The feature list is much more expansive, and the only gripes I really have are the missing environments like `\align` and the font modifers `\mathrm`, `\mathbf`, `\mathcal` _etc._
 However, it looks like these will all be part of the next release according to the status of [this pull request](https://github.com/Khan/KaTeX/pull/132).
 
-My personal saviour was introduced in v0.3.0 by the way of the [auto-render extension](https://github.com/Khan/KaTeX/blob/master/contrib/auto-render/README.md) which acts in a similar fashion to the __MathJax__ implementation and scans for `$$`, `\[` and `\(` tags.
+My personal saviour was introduced in v0.3.0 by the way of the [auto-render extension](https://github.com/Khan/KaTeX/blob/master/contrib/auto-render/README.md) which acts in a similar fashion to the __MathJax__ implementation and scans for `$$ ... $$`, `\[ ... \]` and `\( ... \)` tags.
 The first two tags indicate the display size environment whereas the last tag is for inline maths.
 
-Luckily, __Hakyll__ parses the single `$` tag in markdown and renders it as `\(` for use with __MathJax__.
+Luckily, __Hakyll__ parses the single `$ ... $` tag in markdown and renders it as `\( ... \)` for use with __MathJax__.
 So to get __KaTex__ working, we just need to build a maths context
 
 ``` haskell
@@ -49,7 +49,7 @@ and apply it to any template where the context is needed. For me, that's:
 
 ``` haskell
 loadAndApplyTemplate "templates/default.html" (mathCtx `mappend` postCtx) full
-...
+--- ... ---
 >>= loadAndApplyTemplate "templates/default.html" (mathCtx `mappend` indexCtx)
 ```
 
@@ -57,21 +57,37 @@ which you can checkout properly in my [site.hs](https://github.com/Libbum/Axioma
 The reason I do it this way rather than just calling the stylesheet and .js files in `default.html` is to keep the site as lean as possible.
 Sure, I have some fancy things going on in the header _etc._ but I'm not pulling in `jQuery` or some other large library for no good reason, and there's no good reason to load __KaTeX__ on every page when only a few places will ever need it.
 
-So I have a `katex` field which, if activated in the preamble of a post (for instance, see the markdown of this entry [here]())
+So I have a `katex` field which, if activated in the preamble of a post (for instance, see the markdown of this entry [here](https://raw.githubusercontent.com/Libbum/AxiomaticSemantics/master/posts/2015-08-06-using-katex-with-hakyll.markdown)), pumps in the return result of the `katex` field above into `default.html` (full source [here](https://github.com/Libbum/AxiomaticSemantics/blob/master/templates/default.html)) and calls the auto-renderer.
+
+``` html
+$if(katex)$ $katex$ $endif$
+<!-- ... -->
+$if(katex)$
+<script>
+  renderMathInElement(document.body);
+</script>
+$endif$
+```
+
+With all that in place, embedding maths into posts is essentially trivial, cross platform and most importantly seemless.
+As an example, heres a short discussion about some of my recent work using just the `$ ... $` inline and `$$ ... $$` display tags in markdown.
 
 
-$$\lvert a^\prime_3\rangle = \frac{\lvert a_3\rangle -\lvert a^\prime_1\rangle\langle a^\prime_1 | a_3\rangle -\lvert a^\prime_2\rangle\langle a^\prime_2 | a_3\rangle}{\left\Vert \lvert a_3\rangle -\lvert a^\prime_1\rangle\langle a^\prime_1 | a_3\rangle -\lvert a^\prime_2\rangle\langle a^\prime_2 | a_3\rangle \right\Vert}$$
+---
 
-$$\lvert\tilde{\psi^\prime_1}\rangle = \lvert\psi^\prime_1\rangle-\lvert\psi_0\rangle\langle\psi_0\vert\psi^\prime_1\rangle$$
+Wick rotations are primarily used to find solutions to Minkowski space problems by an Euclidean space mapping.
+We can also use the rotation to evolve a time-dependent Schrödinger equation and solve for time-independent solutions in three dimensions.
+To do so we transfer our TDSE into and imaginary time basis $t=i\tau$:
 
 $$i \hbar \frac{\partial}{\partial t}\Psi(\vec{r},t) = H\Psi(\vec{r},t) \Rightarrow - \hbar \frac{\partial}{\partial \tau}\Psi(\vec{r},\tau) = H\Psi(\vec{r},\tau)$$
 
-$$F_\epsilon = \frac{1}{180}2\lvert f_{-3}\rvert + 27|f_{-2}| + 270|f_{-1}| + 490|f_{0}| + 270|f_{1}| + 27|f_{2}| + 2|f_{3}|$$
+which yields a general solution to the wavefunctions
 
-$$\Psi(\vec{r},\tau) = \sum_{k=0}^\infty a_k\psi_k(\vec{r})e^{-E_k \tau}$$
+$$\Psi(\vec{r},\tau) = \sum_{k=0}^\infty a_k\psi_k(\vec{r})e^{-E_k \tau}.$$
 
+Using the Gram-Schmidt orthoganilsation procedure, higher order orthogonal eigenfunctions can be found by projecting a guess along the lower states.
+For example
 
+$$\lvert\tilde{\psi^\prime_1}\rangle = \lvert\psi^\prime_1\rangle-\lvert\psi_0\rangle\langle\psi_0\vert\psi^\prime_1\rangle,$$
 
-
-
-$$\wp_x = \iint \psi_0^*(x,y) x \psi_1(x,y) \,\text{d}x\text{d}y$$
+which can even identify eigenfunctions within a degenerate subspace, as each state is _chosen_ to be orthogonal to the systems' basis.
