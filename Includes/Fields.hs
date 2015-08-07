@@ -17,5 +17,7 @@ mathCtx :: Context a
 mathCtx = field "katex" $ \item -> do
     metadata <- getMetadata $ itemIdentifier item
     return $ if "katex" `M.member` metadata
-                  then "<link rel=\"stylesheet\" href=\"/css/katex.min.css\" /><script type=\"text/javascript\" src=\"/js/katex.min.js\"></script><script src=\"/js/auto-render.min.js\"></script>"
+                  then "<link rel=\"stylesheet\" href=\"/css/katex.min.css\">\n\
+                       \<script type=\"text/javascript\" src=\"/js/katex.min.js\"></script>\n\
+                       \<script src=\"/js/auto-render.min.js\"></script>"
                   else ""
