@@ -29,8 +29,29 @@ However, it looks like these will all be part of the next release according to t
 My personal saviour was introduced in v0.3.0 by the way of the [auto-render extension](https://github.com/Khan/KaTeX/blob/master/contrib/auto-render/README.md) which acts in a similar fashion to the __MathJax__ implementation and scans for `$$ ... $$`, `\[ ... \]` and `\( ... \)` tags.
 The first two tags indicate the display size environment whereas the last tag is for inline maths.
 
-Luckily, __Hakyll__ parses the single `$ ... $` tag in markdown and renders it as `\( ... \)` for use with __MathJax__.
-So to get __KaTex__ working, we just need to build a maths context
+Luckily, you can configure __Pandoc__ such that __Hakyll__ parses the single `$ ... $` tag in markdown and renders it as `\( ... \)` for use with __MathJax__.
+Travis Athougies has a good writeup on how to do this on his blog [here](http://travis.athougies.net/posts/2013-08-13-using-math-on-your-hakyll-blog.html), although I overload my pandoc options a little different so that __pygments__ can be used to do the syntax highlighting on my blog (see my [Pandoc.hs](https://github.com/Libbum/AxiomaticSemantics/blob/master/Includes/Pandoc.hs)):
+
+``` haskell
+readerOpts :: ReaderOptions
+readerOpts =
+    let extensions =
+        S.fromList [ Ext_tex_math_dollars
+                              , Ext_inline_code_attributes
+                              , Ext_abbreviations
+                              ]
+    in def { readerSmart = True
+                , readerExtensions = S.union extensions (writerExtensions def)
+                }
+
+writerOpts :: WriterOptions
+writerOpts = def { writerHTMLMathMethod = MathJax ""
+                                  , writerHighlight = False
+                                  , writerHtml5 = True
+                                  }
+```
+
+So to get __KaTex__ working from this starting point, we just need to build a maths context
 
 ``` haskell
 import qualified Data.Map as M
