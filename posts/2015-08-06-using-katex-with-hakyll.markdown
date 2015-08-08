@@ -30,7 +30,7 @@ My personal saviour was introduced in v0.3.0 by the way of the [auto-render exte
 The first two tags indicate the display size environment whereas the last tag is for inline maths.
 
 Luckily, you can configure __Pandoc__ such that __Hakyll__ parses the single `$ ... $` tag in markdown and renders it as `\( ... \)` for use with __MathJax__.
-Travis Athougies has a good writeup on how to do this on his blog [here](http://travis.athougies.net/posts/2013-08-13-using-math-on-your-hakyll-blog.html), although I overload my pandoc options a little different so that __pygments__ can be used to do the syntax highlighting on my blog (see my [Pandoc.hs](https://github.com/Libbum/AxiomaticSemantics/blob/master/Includes/Pandoc.hs)):
+Travis Athougies has a good writeup on how to do this on his blog [here](http://travis.athougies.net/posts/2013-08-13-using-math-on-your-hakyll-blog.html), although I overload my pandoc options a little different so that __Pygments__ can be used to do the syntax highlighting on my blog (see my [Pandoc.hs](https://github.com/Libbum/AxiomaticSemantics/blob/master/Includes/Pandoc.hs)):
 
 ``` haskell
 readerOpts :: ReaderOptions
@@ -98,7 +98,7 @@ As an example, heres a short discussion about some of my recent work using just 
 
 Wick rotations are primarily used to find solutions to Minkowski space problems by an Euclidean space mapping.
 We can also use the rotation to evolve a time-dependent Schrödinger equation and solve for time-independent solutions in three dimensions.
-To do so we transfer our TDSE into and imaginary time basis $t=i\tau$:
+To do so we transfer our TDSE into an imaginary time basis $t=i\tau$:
 
 $$i \hbar \frac{\partial}{\partial t}\Psi(\vec{r},t) = H\Psi(\vec{r},t) \Rightarrow - \hbar \frac{\partial}{\partial \tau}\Psi(\vec{r},\tau) = H\Psi(\vec{r},\tau)$$
 
