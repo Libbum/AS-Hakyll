@@ -66,6 +66,7 @@ foreach ($mergedworks as $key => $work) {
                 $dois[] = $ids['work-external-identifier-id']['value'];
             }
         }
+		$mergedworks[$key] = array_merge($mergedworks[$key], array('parse'=>1)); //Build a parse check field. Parse by default, set to zero if there's an issue.
     } else {
         unset($mergedworks[$key]); //For now, kill anything without a DOI.
     }
@@ -74,18 +75,8 @@ foreach ($mergedworks as $key => $work) {
 //Find all unique dois
 $udois = array_unique($dois);
 
-//Sort array by year
-usort($mergedworks, function($a, $b) {
-    return ($a['publication-date']['year']['value'] > $b['publication-date']['year']['value']) ? -1 : 1;
-});
-
-
-$curr_year = date("Y");
-$output = "<h2>" . $curr_year . "</h2>";
-
-//sanitise merged array and print results.
-foreach ($mergedworks as $work) {
-    $toparse = 1; //Parse by default, set to zero if there's an issue.
+//sanitise merged array.
+foreach ($mergedworks as $mkey => $work) {
     //Identify Duplicates
     foreach ($work['work-external-identifiers']['work-external-identifier'] as $ids) {
         if (strcmp($ids['work-external-identifier-type'], 'DOI') == 0) {
@@ -95,33 +86,41 @@ foreach ($mergedworks as $work) {
 
             unset($udois[$key]); //Found one, don't need another.
             if ($key === false) {
-                $toparse = 0; //Don't parse this entry
+				$mergedworks[$mkey]['parse'] = 0; //Don't parse this entry
             }
         }
     }
+}
 
-    //Identify Results earlier than 2011
+//Sort array by year
+usort($mergedworks, function($a, $b) {
+    return ($a['publication-date']['year']['value'] > $b['publication-date']['year']['value']) ? -1 : 1;
+});
+
+$curr_year = date("Y");
+$output = "<h2>" . $curr_year . "</h2>";
+foreach ($mergedworks as $work) {
+	//Identify Results earlier than 2011
     $year = $work['publication-date']['year']['value'];
     if ($year < '2011') {
-        $toparse = 0; //Don't parse this entry
+		$work['parse'] = 0; //Don't parse this entry
     } elseif ($year < $curr_year) {
         //As our list is sorted, we've moved to the previous year now. Separate the results.
         $curr_year = $year;
         $output .= "<br><h2>" . $curr_year . "</h2>";
     }
-
-    //Print results (For now, not sorted by year)
-    if ($toparse === 1) {
+    //Print results 
+    if ($work['parse'] === 1) {
         $output .= '<b>' . $work['work-title']['title']['value'] . '</b><br>';
 
         if (strcmp($work['work-citation']['work-citation-type'], 'BIBTEX') == 0) {
             $bibtex = $work['work-citation']['citation'];
             $volume = '';
             $pages  = '';
-            if (preg_match('/volume = {(\\d+)}/', $bibtex, $match)) {
+            if (preg_match('/volume\\s?=\\s?{(\\d+)}/', $bibtex, $match)) {
                 $volume = $match[1];
             }
-            if (preg_match('/pages = {([0-9-]+)}/', $bibtex, $match)) {
+            if (preg_match('/pages\\s?=\\s?{([0-9-]+)}/', $bibtex, $match)) {
                 $pages = $match[1];
             }
         }
@@ -140,7 +139,7 @@ foreach ($mergedworks as $work) {
             }
         } else {
             //Get authorlist from bibtex
-            if (preg_match('/author = {(.+)}/', $bibtex, $match)) {
+            if (preg_match('/author\\s?=\\s?{(.+)}/', $bibtex, $match)) {
                 $authorstr = $match[1];
                 $authors   = explode(" and ", $authorstr);
                 foreach ($authors as $author) {
