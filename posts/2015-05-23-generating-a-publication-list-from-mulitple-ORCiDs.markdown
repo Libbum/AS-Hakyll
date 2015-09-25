@@ -66,7 +66,7 @@ foreach ($mergedworks as $key => $work) {
                 $dois[] = $ids['work-external-identifier-id']['value'];
             }
         }
-		$mergedworks[$key] = array_merge($mergedworks[$key], array('parse'=>1)); //Build a parse check field. Parse by default, set to zero if there's an issue.
+		$mergedworks[$key] = array_merge($mergedworks[$key], array('parse'=>1,'udoi'=>'')); //Build a parse check field. Parse by default, set to zero if there's an issue.
     } else {
         unset($mergedworks[$key]); //For now, kill anything without a DOI.
     }
@@ -81,7 +81,7 @@ foreach ($mergedworks as $mkey => $work) {
     foreach ($work['work-external-identifiers']['work-external-identifier'] as $ids) {
         if (strcmp($ids['work-external-identifier-type'], 'DOI') == 0) {
             $doi = $ids['work-external-identifier-id']['value'];
-
+	    $mergedworks[$mkey]['udoi'] = $doi;
             $key = array_search($doi, $udois); // Find where DOI is in the unique list
 
             unset($udois[$key]); //Found one, don't need another.
@@ -156,7 +156,7 @@ foreach ($mergedworks as $work) {
             }
         }
 
-        $output .= '<a href="http://dx.doi.org/' . $doi . '">' . $work['journal-title']['value'] . ' <b>' . $volume . '</b> ' . $pages . ' (' . $work['publication-date']['year']['value'] . ')</a><br>';
+        $output .= '<a href="http://dx.doi.org/' . $work['udoi'] . '">' . $work['journal-title']['value'] . ' <b>' . $volume . '</b> ' . $pages . ' (' . $work['publication-date']['year']['value'] . ')</a><br>';
     }
 }
 
