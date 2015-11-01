@@ -23,13 +23,9 @@ import qualified Data.Set as S
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 
-pandocHtml5Compiler :: FilePath -> Item String -> Compiler (Item String)
-pandocHtml5Compiler storePath item = do
-    pandocBuilder readerOpts writerOpts (walk $ pygments storePath) item
-
-pandocBuilder :: ReaderOptions -> WriterOptions -> (Pandoc -> Pandoc) -> Item String -> Compiler (Item String)
-pandocBuilder ropt wopt f item =
-  writePandocWith wopt . fmap f . readPandocWith ropt <$> (return $ item)
+pandocHtml5Compiler :: FilePath -> Compiler (Item String)
+pandocHtml5Compiler storePath = do
+    pandocCompilerWithTransform readerOpts writerOpts (walk $ pygments storePath)
 
 cache :: String -> String -> FilePath -> String
 cache code lang storePath = unsafePerformIO $ do

@@ -22,20 +22,19 @@ main = hakyllWith config $ do
 
     match "about.markdown" $ do
         route   $ setExtension "html"
-        compile $ getResourceBody
-            >>= pandocHtml5Compiler (storeDirectory config)
+        compile $ pandocHtml5Compiler (storeDirectory config)
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
     tags <- buildTags "posts/*" $ fromCapture "tags/*.html"
-    pages <- buildPaginate "posts/*"
+    --pages <- buildPaginate "posts/*"
 
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ do
-            compiled <- getResourceBody >>= pandocHtml5Compiler (storeDirectory config)
+            compiled <- pandocHtml5Compiler (storeDirectory config)
             let pagesCtx =
-                    paginateContext pages `mappend` tagsField "tags" tags `mappend` postCtx
+                    tagsField "tags" tags `mappend` postCtx
 
             full <- loadAndApplyTemplate "templates/post.html" pagesCtx compiled
             index <- loadAndApplyTemplate "templates/post-index.html" postCtx compiled
