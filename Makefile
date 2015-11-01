@@ -1,8 +1,11 @@
 # If cygwin gives you issues with UTF-8, run .scripts/codePage
+# If using Arch-Haskell, it isn't built with a previewer.
 ifeq ($(OS), Windows_NT)
         exe := ./site.exe
+        watch := ./site.exe watch
 else
         exe := ./site
+        watch := cd _site; python -m http.server 8000
 endif
 
 clean: site
@@ -16,7 +19,7 @@ post:
 	vim posts/`date +%Y-%m-%d`-${TITLE}.markdown
 
 preview: rebuild
-	$(exe) watch
+	$(watch)
 
 rebuild: site
 	$(exe) rebuild
