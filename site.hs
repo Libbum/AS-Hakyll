@@ -8,6 +8,13 @@ import Hakyll
 import Includes.Fields
 import Includes.Pandoc
 
+import Data.Hashable (Hashable, hashWithSalt)
+import qualified Data.HashMap.Strict as HM
+import System.FilePath (takeFileName)
+import Data.Time.Format (parseTimeM, defaultTimeLocale)
+import Data.Time.Clock (UTCTime)
+import Data.List (intercalate, sortBy)
+import Control.Applicative (Alternative (..))
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyllWith config $ do
@@ -27,13 +34,19 @@ main = hakyllWith config $ do
             >>= relativizeUrls
 
     tags <- buildTags "posts/*" $ fromCapture "tags/*.html"
-    --pages <- buildPaginate "posts/*"
+
+    allPosts <- getMatches "posts/*"
+    let sortedPosts = sortIdentifiersByDate allPosts
+        (prevPostHM, nextPostHM) = buildAdjacentPostsHashMap sortedPosts
+    --pages <- buildPaginateWith (return . map return . sort) "posts/*" _makeId_
 
     match "posts/*" $ do
         route $ setExtension "html"
         compile $ do
             compiled <- pandocHtml5Compiler (storeDirectory config)
             let pagesCtx =
+                    field "nextPost" (lookupPostUrl nextPostHM) <>
+                    field "prevPost" (lookupPostUrl prevPostHM) <>
                     tagsField "tags" tags <> postCtx
 
             full <- loadAndApplyTemplate "templates/post.html" pagesCtx compiled
@@ -140,3 +153,67 @@ postsTagged tags pattern sortFilter = do
 
 getBlurb :: Item String -> Item String
 getBlurb = fmap (unwords . takeWhile (/= "<!--BLURB-->") . splitOn " ")
+
+
+sortIdentifiersByDate :: [Identifier] -> [Identifier]
+sortIdentifiersByDate identifiers =
+    reverse $ sortBy byDate identifiers
+    where
+    byDate id1 id2 =
+        let fn1 = takeFileName $ toFilePath id1
+            fn2 = takeFileName $ toFilePath id2
+            parseTime' fn = parseTimeM True defaultTimeLocale "%Y-%m-%d" $ intercalate "-" $ take 3 $ splitAll "-" fn
+        in compare ((parseTime' fn1) :: Maybe UTCTime) ((parseTime' fn2) :: Maybe UTCTime)
+
+type AdjPostHM = HM.HashMap Identifier Identifier
+
+
+instance Hashable Identifier where
+    hashWithSalt salt = hashWithSalt salt . show
+
+
+buildAdjacentPostsHashMap :: [Identifier] -> (AdjPostHM, AdjPostHM)
+buildAdjacentPostsHashMap posts =
+    let buildHM :: [Identifier] -> [Identifier] -> AdjPostHM
+        buildHM [] _ = HM.empty
+        buildHM _ [] = HM.empty
+        buildHM (k:ks) (v:vs) = HM.insert k v $ buildHM ks vs
+    in (buildHM (tail posts) posts, buildHM posts (tail posts))
+
+
+lookupPostUrl :: AdjPostHM -> Item String -> Compiler String
+lookupPostUrl hm post =
+    let ident = itemIdentifier post
+        ident' = HM.lookup ident hm
+    in
+    (fmap (maybe empty $ toUrl) . (maybe empty getRoute)) ident'
+
+
+previousPostUrl :: [Identifier] -> Item String -> Compiler String
+previousPostUrl sortedPosts post = do
+    let ident = itemIdentifier post
+        ident' = itemBefore sortedPosts ident
+    (fmap (maybe empty $ toUrl) . (maybe empty getRoute)) ident'
+
+
+nextPostUrl :: [Identifier] -> Item String -> Compiler String
+nextPostUrl sortedPosts post = do
+    let ident = itemIdentifier post
+        ident' = itemAfter sortedPosts ident
+    (fmap (maybe empty $ toUrl) . (maybe empty getRoute)) ident'
+
+
+itemAfter :: Eq a => [a] -> a -> Maybe a
+itemAfter xs x =
+    lookup x $ zip xs (tail xs)
+
+
+itemBefore :: Eq a => [a] -> a -> Maybe a
+itemBefore xs x =
+    lookup x $ zip (tail xs) xs
+
+
+urlOfPost :: Item String -> Compiler String
+urlOfPost =
+    fmap (maybe empty $ toUrl) . getRoute . itemIdentifier
+
