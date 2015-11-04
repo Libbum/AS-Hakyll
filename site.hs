@@ -3,7 +3,7 @@
 
 import Control.Applicative ((<$>))
 import Data.List.Split (splitOn)
-import Data.Monoid (mappend)
+import Data.Monoid ((<>))
 import Hakyll
 import Includes.Fields
 import Includes.Pandoc
@@ -34,7 +34,7 @@ main = hakyllWith config $ do
         compile $ do
             compiled <- pandocHtml5Compiler (storeDirectory config)
             let pagesCtx =
-                    tagsField "tags" tags `mappend` postCtx
+                    tagsField "tags" tags <> postCtx
 
             full <- loadAndApplyTemplate "templates/post.html" pagesCtx compiled
             index <- loadAndApplyTemplate "templates/post-index.html" postCtx compiled
@@ -42,7 +42,7 @@ main = hakyllWith config $ do
             saveSnapshot "content" full
             saveSnapshot "index" index
             saveSnapshot "blurb" blurb
-            loadAndApplyTemplate "templates/default.html" (mathCtx `mappend` postCtx) full
+            loadAndApplyTemplate "templates/default.html" (mathCtx <> postCtx) full
                 >>= relativizeUrls
 
     create ["archive.html"] $ do
@@ -50,8 +50,8 @@ main = hakyllWith config $ do
         compile $ do
             posts <- recentFirst =<< loadAll "posts/*"
             let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
+                    listField "posts" postCtx (return posts) <>
+                    constField "title" "Archives"            <>
                     defaultContext
 
             makeItem ""
@@ -64,7 +64,7 @@ main = hakyllWith config $ do
         compile $ do
             --TODO: Generate papers metadata
             let papersCtx =
-                    constField "title" "Papers"            `mappend`
+                    constField "title" "Papers"            <>
                     defaultContext
 
             makeItem ""
@@ -73,7 +73,7 @@ main = hakyllWith config $ do
                 >>= relativizeUrls
 
     tagsRules tags $ \tag pattern -> do
-        let tagCtx = constField "title" ("Posts tagged with " ++ tag) `mappend` defaultContext
+        let tagCtx = constField "title" ("Posts tagged with " ++ tag) <> defaultContext
 
         route idRoute
         compile $ do
@@ -86,7 +86,7 @@ main = hakyllWith config $ do
     create ["atom.xml"] $ do
         route idRoute
         compile $ do
-            let feedCtx = postCtx `mappend` bodyField "description"
+            let feedCtx = postCtx <> bodyField "description"
             ---TODO: May need to build a feed snapshot, the article class wrappers etc may get in the way.
             posts <- (take 10) <$> (recentFirst =<< loadAllSnapshots "posts/*" "content")
             renderAtom atomFeedConfig feedCtx posts
@@ -96,17 +96,17 @@ main = hakyllWith config $ do
         compile $ do
             posts <- drop 3 . (take 8) <$> (recentFirst =<< loadAll "posts/*")
             let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
-                    field "first" (const (itemBody <$> mostRecentPost)) `mappend`
-                    field "second" (const (itemBody <$> (head <$> recentBlurbs))) `mappend`
-                    field "third" (const (itemBody <$> (last <$> recentBlurbs))) `mappend`
-                    tagCloudField "cloud" 100 300 tags `mappend`
+                    listField "posts" postCtx (return posts) <>
+                    constField "title" "Home"                <>
+                    field "first" (const (itemBody <$> mostRecentPost)) <>
+                    field "second" (const (itemBody <$> (head <$> recentBlurbs))) <>
+                    field "third" (const (itemBody <$> (last <$> recentBlurbs))) <>
+                    tagCloudField "cloud" 100 300 tags <>
                     defaultContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.html" (mathCtx `mappend` indexCtx)
+                >>= loadAndApplyTemplate "templates/default.html" (mathCtx <> indexCtx)
                 >>= relativizeUrls
 
     match "templates/*" $ compile templateCompiler
