@@ -38,7 +38,6 @@ main = hakyllWith config $ do
     allPosts <- getMatches "posts/*"
     let sortedPosts = sortIdentifiersByDate allPosts
         (prevPostHM, nextPostHM) = buildAdjacentPostsHashMap sortedPosts
-    --pages <- buildPaginateWith (return . map return . sort) "posts/*" _makeId_
 
     match "posts/*" $ do
         route $ setExtension "html"
@@ -157,7 +156,7 @@ getBlurb = fmap (unwords . takeWhile (/= "<!--BLURB-->") . splitOn " ")
 
 sortIdentifiersByDate :: [Identifier] -> [Identifier]
 sortIdentifiersByDate identifiers =
-    reverse $ sortBy byDate identifiers
+    sortBy byDate identifiers
     where
     byDate id1 id2 =
         let fn1 = takeFileName $ toFilePath id1
