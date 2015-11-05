@@ -19,7 +19,7 @@ import Control.Applicative (Alternative (..))
 main :: IO ()
 main = hakyllWith config $ do
 
-    match ("images/*" .||. "favicon.ico" .||. "js/*" .||. "papers/*" .||. "css/fonts/*") $ do
+    match ("images/*" .||. "favicon.ico" .||. "js/*" .||. "papers/*" .||. "css/fonts/*" .||. "robots.txt" .||. "error/*") $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -141,7 +141,7 @@ atomFeedConfig = FeedConfiguration
     , feedDescription = "Brute force solutions with proofs by intimidation"
     , feedAuthorName  = "Tim DuBois"
     , feedAuthorEmail = "tim@neophilus.net"
-    , feedRoot        = "http://axiomatic.neophilus.net"
+    , feedRoot        = "https://axiomatic.neophilus.net"
     }
 
 postsTagged :: Tags -> Pattern -> ([Item String] -> Compiler [Item String]) -> Compiler String
@@ -215,4 +215,3 @@ itemBefore xs x =
 urlOfPost :: Item String -> Compiler String
 urlOfPost =
     fmap (maybe empty $ toUrl) . getRoute . itemIdentifier
-

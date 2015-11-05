@@ -7,4 +7,4 @@ This code is distributed under the [MIT License](http://opensource.org/licenses/
 
 * [x] Fix pagination which broke from hakyll 4.5.4
 * [ ] There's a bug somewhere in the js serving the page size. Ultra high res seems to be classified as tablet size?
-
+* [ ] Sort out the error pages rather than nginx defaults
