@@ -19,7 +19,7 @@ import Control.Applicative (Alternative (..))
 main :: IO ()
 main = hakyllWith config $ do
 
-    match ("images/*" .||. "favicon.ico" .||. "js/*" .||. "papers/*" .||. "css/fonts/*" .||. "robots.txt" .||. "error/*") $ do
+    match ("images/*" .||. "favicon.ico" .||. "assets/*" .||. "js/*" .||. "papers/*" .||. "css/fonts/*" .||. "robots.txt" .||. "error/*") $ do
         route   idRoute
         compile copyFileCompiler
 
