@@ -4,7 +4,7 @@ byline: The little guy is often the most important.
 tags: JavaScript, D3.js
 ---
 
-In the process of building [Odyssey](https://odyssen.neophilus.net), I came across an omission in most of the world structures on [Bl.ocks](http://bl.ocks.org/). Pretty much everyone nowadays grabs the [Natural Earth](http://www.naturalearthdata.com/) `ne_110m_admin_0_countries` dataset, converts it to [TopoJSON](https://github.com/mbostock/topojson), throws the result to a projection such as
+In the process of building [Odyssey](https://odyssey.neophilus.net), I came across an omission in most of the world structures on [Bl.ocks](http://bl.ocks.org/). Pretty much everyone nowadays grabs the [Natural Earth](http://www.naturalearthdata.com/) `ne_110m_admin_0_countries` dataset, converts it to [TopoJSON](https://github.com/mbostock/topojson), throws the result to a projection such as
 
 ``` javascript
    d3.geo.orthographic().translate([width / 2, height / 2]).scale(width / 2 - 20).clipAngle(90)
@@ -59,7 +59,7 @@ To do this one can modify the `.data(land)` item to include a filter
 which will give us back our normal looking globe. However, we now have a complete list of individual countries which we can reference via their `su_a3` id or name and in-turn, center the viewport on a country even if it isn't visible on this scale. The map below is filtering out ONLY tiny countries and giving you a world tour. Full codebase for this globe is [here](http://bl.ocks.org/Libbum/ec6a8df2049c6084106512e962788aa5).
 <div id="countryName"></div>
 <div id="map2"></div>
-For a better demo of what can be done with this, checkout my photoblog [Odyssey](https://odyssen.neophilus.net).
+For a better demo of what can be done with this, checkout my photoblog [Odyssey](https://odyssey.neophilus.net).
 
 <style>
 .fill {
