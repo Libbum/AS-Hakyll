@@ -56,7 +56,7 @@ To do this one can modify the `.data(land)` item to include a filter
 ``` javascript
 .data(land.filter(function(d) { return d.geometry.type !== 'Point'; }))
 ```
-which will give us back our normal looking globe. However, we now have a complete list of individual countries which we can reference via their `su_a3` id or name and in-turn, center the viewport on a country even if it isn't visible on this scale. The map below is filtering out ONLY tiny countries and giving you a world tour.
+which will give us back our normal looking globe. However, we now have a complete list of individual countries which we can reference via their `su_a3` id or name and in-turn, center the viewport on a country even if it isn't visible on this scale. The map below is filtering out ONLY tiny countries and giving you a world tour. Full codebase for this globe is [here](http://bl.ocks.org/Libbum/ec6a8df2049c6084106512e962788aa5).
 <div id="countryName"></div>
 <div id="map2"></div>
 For a better demo of what can be done with this, checkout my photoblog [Odyssey](https://odyssen.neophilus.net).
