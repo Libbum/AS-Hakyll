@@ -49,11 +49,13 @@ main = hakyllWith config $ do
                     tagsField "tags" tags <> postCtx
 
             full <- loadAndApplyTemplate "templates/post.html" pagesCtx compiled
-            index <- loadAndApplyTemplate "templates/post-index.html" postCtx compiled
+            index <- loadAndApplyTemplate "templates/post-index.html" postCtx $ getBlurb compiled
             blurb <- loadAndApplyTemplate "templates/post-blurb.html" postCtx $ getBlurb compiled
+            expand <- loadAndApplyTemplate "templates/post-expand.html" postCtx $ getExpand compiled
             saveSnapshot "content" full
             saveSnapshot "index" index
             saveSnapshot "blurb" blurb
+            saveSnapshot "expand" expand
             loadAndApplyTemplate "templates/default.html" (mathCtx <> postCtx) full
                 >>= relativizeUrls
 
@@ -111,6 +113,7 @@ main = hakyllWith config $ do
                     listField "posts" postCtx (return posts) <>
                     constField "title" "Home"                <>
                     field "first" (const (itemBody <$> mostRecentPost)) <>
+                    field "expand" (const (itemBody <$> mostRecentExpand)) <>
                     field "second" (const (itemBody <$> (head <$> recentBlurbs))) <>
                     field "third" (const (itemBody <$> (last <$> recentBlurbs))) <>
                     tagCloudField "cloud" 100 300 tags <>
@@ -131,6 +134,9 @@ config = defaultConfiguration
 
 mostRecentPost :: Compiler (Item String)
 mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "index")
+
+mostRecentExpand :: Compiler (Item String)
+mostRecentExpand = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "expand")
 
 recentBlurbs :: Compiler [Item String]
 recentBlurbs = tail . (take 3) <$> (recentFirst =<< loadAllSnapshots "posts/*" "blurb")
@@ -153,6 +159,8 @@ postsTagged tags pattern sortFilter = do
 getBlurb :: Item String -> Item String
 getBlurb = fmap (unwords . takeWhile (/= "<!--BLURB-->") . splitOn " ")
 
+getExpand :: Item String -> Item String
+getExpand = fmap (unwords . drop 1 . dropWhile (/= "<!--BLURB-->") . splitOn " ")
 
 sortIdentifiersByDate :: [Identifier] -> [Identifier]
 sortIdentifiersByDate identifiers =
@@ -166,10 +174,8 @@ sortIdentifiersByDate identifiers =
 
 type AdjPostHM = HM.HashMap Identifier Identifier
 
-
 instance Hashable Identifier where
     hashWithSalt salt = hashWithSalt salt . show
-
 
 buildAdjacentPostsHashMap :: [Identifier] -> (AdjPostHM, AdjPostHM)
 buildAdjacentPostsHashMap posts =
@@ -179,7 +185,6 @@ buildAdjacentPostsHashMap posts =
         buildHM (k:ks) (v:vs) = HM.insert k v $ buildHM ks vs
     in (buildHM (tail posts) posts, buildHM posts (tail posts))
 
-
 lookupPostUrl :: AdjPostHM -> Item String -> Compiler String
 lookupPostUrl hm post =
     let ident = itemIdentifier post
@@ -187,13 +192,11 @@ lookupPostUrl hm post =
     in
     (fmap (maybe empty $ toUrl) . (maybe empty getRoute)) ident'
 
-
 previousPostUrl :: [Identifier] -> Item String -> Compiler String
 previousPostUrl sortedPosts post = do
     let ident = itemIdentifier post
         ident' = itemBefore sortedPosts ident
     (fmap (maybe empty $ toUrl) . (maybe empty getRoute)) ident'
-
 
 nextPostUrl :: [Identifier] -> Item String -> Compiler String
 nextPostUrl sortedPosts post = do
@@ -201,16 +204,13 @@ nextPostUrl sortedPosts post = do
         ident' = itemAfter sortedPosts ident
     (fmap (maybe empty $ toUrl) . (maybe empty getRoute)) ident'
 
-
 itemAfter :: Eq a => [a] -> a -> Maybe a
 itemAfter xs x =
     lookup x $ zip xs (tail xs)
 
-
 itemBefore :: Eq a => [a] -> a -> Maybe a
 itemBefore xs x =
     lookup x $ zip (tail xs) xs
-
 
 urlOfPost :: Item String -> Compiler String
 urlOfPost =

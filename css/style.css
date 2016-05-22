@@ -478,6 +478,28 @@ canvas{
             float: right;
         }
 
+  /*********************************************************************************/
+  /* Read More                                                                     */
+  /*********************************************************************************/
+
+        .read-more-target {
+         display: none;
+       }
+       .read-more-trigger:before {
+         content: '\2b10\00A0 Expand\00A0\2b0e';
+         position: relative;
+         top: -0.85em;
+         padding: 0 0.5em;
+         background-image: url('../images/bg.jpg');
+       }
+       .read-more-trigger {
+          cursor: pointer;
+          display: block;
+          font-size: 21px;
+          text-align: center;
+          border-top: 3px double #8c8b8b;
+      }
+
 /*********************************************************************************/
 /* Copyright                                                                     */
 /*********************************************************************************/
