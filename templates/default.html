@@ -6,35 +6,31 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style-desktop.css" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700,900" rel="stylesheet" />
-    $if(katex)$ $katex$ $endif$
-    <script>
-        window._skel_config = {
-            preset: 'standard',
-            prefix: '/css/style',
-            resetCSS: true,
-            breakpoints: {
-             '1000px': {
-                grid: {
-                    gutters: 20
-                }
-             }
-           }
-        };
+    <script type="text/javascript">
+       window._skel_config = {
+           preset: 'standard',
+           prefix: '/css/style',
+           resetCSS: true,
+           breakpoints: {
+            '1000px': {
+               grid: {
+                   gutters: 20
+               }
+            }
+         }
+       };
     </script>
-    <script src="/js/skel.min.js"></script>
-
     <noscript>
         <link rel="stylesheet" href="/css/skel-noscript.css" />
-        <link rel="stylesheet" href="/css/style.css" />
-        <link rel="stylesheet" href="/css/style-desktop.css" />
     </noscript>
     <!--[if lte IE 8]>
     <script src="/js/html5shiv.js"></script>
     <link rel="stylesheet" href="/css/ie8.css" />
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
 </head>
 <body class="right-sidebar">
 <div id="fill-wrapper">
@@ -60,7 +56,6 @@
                             <li><a href="/papers.html">Papers</a></li>
                             <li><a href="/archive.html">Archive</a></li>
                             <li><a href="/atom.xml">Feed</a></li>
-                            <!--TODO: Change this link to a fontawesome feed icon -->
                             <div id="titleBar" class="skel-layer skel-layer-top-left" style="backface-visibility: hidden; transition: -webkit-transform 0.25s ease-in-out; -webkit-transition: -webkit-transform 0.25s ease-in-out; z-index: 10003; position: fixed; display: block; width: 100%; height: 44px; top: 0px; left: 0px; transform: translate(266px, 0px);"><span class="toggle" data-action="toggleLayer" data-args="navPanel" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer;"></span></div>
 
                         </ul>
@@ -117,28 +112,23 @@
     </div>
 </div>
 <!-- /Footer Wrapper -->
+<script src="/js/skel.min.js"></script>
+<script src="/js/particles.min.js" name="particles"></script>
+<script src="/js/particles.control.js" name="particles"></script>
+<script src="/js/headroom.min.js"></script>
 $if(katex)$
-<script>
+$katex$
+<script type="text/javascript">
   renderMathInElement(document.body);
 </script>
 $endif$
-<script src="/js/particles.min.js" name="particles"></script>
-<script src="/js/particles.control.js" name="particles"></script>
-<style type="text/css">
-    .headroom {position: fixed;top: 0;left: 0;right: 0;z-index:5;}
-    .headroom--unpinned {top: -300px; }
-    .headroom--pinned {top: -150px; }
-    .headroom--top {position:absolute;top:0}
-    .headroom--not-top.headroom--pinned { transition: top 0.2s ease-out; }
-</style>
-<script src="/js/headroom.min.js"></script>
 <script type="text/javascript">
-    if ((skel.isActive('desktop')) && (!skel.isActive('1000px'))) {
-        var headerElement = document.querySelector(".head");
-        var headroom  = new Headroom(headerElement);
-        headroom.init();
-        headroom.offset = 200;
-    }
+   if ((skel.isActive('desktop')) && (!skel.isActive('1000px'))) {
+     var headerElement = document.querySelector(".head");
+     var headroom  = new Headroom(headerElement);
+     headroom.init();
+     headroom.offset = 200;
+   }
 </script>
 </body>
 </html>
