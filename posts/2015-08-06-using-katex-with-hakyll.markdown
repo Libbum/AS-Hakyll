@@ -112,3 +112,21 @@ For example
 $$\lvert\tilde{\psi^\prime_1}\rangle = \lvert\psi^\prime_1\rangle-\lvert\psi_0\rangle\langle\psi_0\vert\psi^\prime_1\rangle,$$
 
 which can even identify eigenfunctions within a degenerate subspace, as each state is _chosen_ to be orthogonal to the systems' basis.
+
+__UPDATE:__
+
+As of `Hakyll 4.8.0.0`, a complete metadata overhaul has occured to support YAML. This has broken the `mathCtx` function above and should be replaced by
+
+``` haskell
+mathCtx :: Context a
+mathCtx = field "katex" $ \item -> do
+    katex <- getMetadataField (itemIdentifier item) "katex"
+    return $ case katex of
+                    Just "false" -> ""
+                    Just "off" -> ""
+                    _ -> "<link rel=\"stylesheet\" href=\"/css/katex.min.css\">\n\
+                             \<script type=\"text/javascript\" src=\"/js/katex.min.js\"></script>\n\
+                             \<script src=\"/js/auto-render.min.js\"></script>"
+```
+
+Additionally, much of the gripes concerning __KaTeX__'s math coverage are null and void as the project has matured immensely since the time I initially wrote this post.
