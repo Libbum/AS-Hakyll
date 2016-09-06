@@ -2,8 +2,9 @@
 <div class="thowidth">
 <article class="is is-post">
     <header class="style1">
-        <h2>$title$</h2>
+        <h2 id="title">$title$</h2>
         $if(byline)$<span class="byline">$byline$</span>$endif$
+        <span id="url" class="abstract">$url$</span>
     </header>
     $if(image)$<div class="image image-featured">
         <img src="/images/$image$" alt="" />
