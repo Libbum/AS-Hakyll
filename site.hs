@@ -116,7 +116,7 @@ main = hakyllWith config $ do
                     field "expand" (const (itemBody <$> mostRecentExpand)) <>
                     field "second" (const (itemBody <$> (head <$> recentBlurbs))) <>
                     field "third" (const (itemBody <$> (last <$> recentBlurbs))) <>
-                    tagCloudField "cloud" 100 300 tags <>
+                    tagCloudField "cloud" 100 300 tags <> --TODO: Override to change the sytle output to a set of classes.
                     defaultContext
 
             getResourceBody

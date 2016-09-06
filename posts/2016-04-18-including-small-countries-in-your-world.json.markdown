@@ -63,26 +63,7 @@ which will give us back our normal looking globe. However, we now have a complet
 <div id="map2"></div>
 For a better demo of what can be done with this, checkout my photoblog [Odyssey](https://odyssey.neophilus.net).
 
-<style>
-.fill {
-  fill: #fff;
-}
-.graticule {
-  fill: none;
-  stroke: #777;
-  stroke-width: .5px;
-  stroke-opacity: .5;
-}
-.land {
-  fill: #222;
-}
-#map, #map2, #countryName {
-   text-align: center;
-}
-.cselect {
-   fill: #81a2be;
-}
-</style>
+<link rel="stylesheet" href="/css/world.css" />
 <script src="https://d3js.org/d3.v3.min.js" integrity="sha384-N8EP0Yml0jN7e0DcXlZ6rt+iqKU9Ck6f1ZQ+j2puxatnBq4k9E8Q6vqBcY34LNbn" crossorigin="anonymous"></script>
 <script src="https://d3js.org/topojson.v1.min.js" integrity="sha384-boXIWqx94OWYt4yZLRyY9vYQnbmSj62zsUHU9bi7HWORmnS5EcDxoTh/gBtpyhvj" crossorigin="anonymous"></script>
 <script src="/js/scwrldtour.js"></script>
