@@ -65,5 +65,5 @@ For a better demo of what can be done with this, checkout my photoblog [Odyssey]
 
 <link rel="stylesheet" href="/css/world.css" />
 <script src="https://d3js.org/d3.v3.min.js" integrity="sha384-N8EP0Yml0jN7e0DcXlZ6rt+iqKU9Ck6f1ZQ+j2puxatnBq4k9E8Q6vqBcY34LNbn" crossorigin="anonymous"></script>
-<script src="https://d3js.org/topojson.v1.min.js" integrity="sha384-boXIWqx94OWYt4yZLRyY9vYQnbmSj62zsUHU9bi7HWORmnS5EcDxoTh/gBtpyhvj" crossorigin="anonymous"></script>
+<script src="https://d3js.org/topojson.v1.min.js" integrity="sha384-rixmHyiNwoWRRzo2hAI10YatWZdVLrJ2W7ZOwCLS1/KC3Yvwd+UZvinmJavsuU7z" crossorigin="anonymous"></script>
 <script src="/js/scwrldtour.js"></script>
