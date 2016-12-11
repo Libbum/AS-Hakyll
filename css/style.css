@@ -38,7 +38,7 @@
         text-decoration: none;
     }
 
-    a
+    a, .abstractlink
     {
         text-decoration: underline;
         color: #717479;
@@ -50,7 +50,7 @@
         transition: color .25s ease-in-out;
     }
 
-        a:hover
+        a:hover, .abstractlink:hover
         {
             text-decoration: none;
         }
