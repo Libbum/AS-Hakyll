@@ -53,6 +53,7 @@
         a:hover, .abstractlink:hover
         {
             text-decoration: none;
+            cursor: pointer;
         }
 
     strong, b
