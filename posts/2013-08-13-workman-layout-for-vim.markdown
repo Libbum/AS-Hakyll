@@ -23,10 +23,14 @@ So, here's my attempt at a decent Workman remapping for Vim:
     nnoremap n j
     nnoremap J N
     nnoremap N J
+    nnoremap gn gj
+    nnoremap gj gn
     nnoremap k e
     nnoremap e k
     nnoremap K E
     nnoremap E <nop>
+    nnoremap gk ge
+    nnoremap ge gk
     nnoremap h y
     onoremap h y
     nnoremap y h
@@ -77,14 +81,18 @@ Considering I now use three different layouts depending on where I am, I've had 
            nnoremap n j
            nnoremap J N
            nnoremap N J
+           nnoremap gn gj
+           nnoremap gj gn
            "(E)nd of word -> brea(K) of word
            nnoremap k e
            nnoremap e k
            nnoremap K E
            nnoremap E <nop>
+           nnoremap gk ge
+           nnoremap ge gk
+           "(Y)ank -> (H)aul
            nnoremap h y
            onoremap h y
-           "(Y)ank -> (H)aul
            nnoremap y h
            nnoremap H Y
            nnoremap Y H
