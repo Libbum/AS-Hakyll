@@ -28,4 +28,4 @@ site: site.hs
 	ghc --make -threaded site.hs
 
 crypto:
-	sudo ghc-pkg hide cryptonite-0.21
+	sudo ghc-pkg hide cryptonite-0.22
