@@ -319,6 +319,12 @@
         display: inline-block;
     }
 
+    .author-highlight {
+	background-color: rgba(200, 200, 200, 0.4);
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+    }
+
 .titleextra {
   backface-visibility: hidden;
   transition: -webkit-transform 0.25s ease-in-out;
