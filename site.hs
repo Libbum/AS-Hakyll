@@ -130,7 +130,7 @@ main = hakyllWith config $ do
 --------------------------------------------------------------------------------
 config :: Configuration
 config = defaultConfiguration
-        { deployCommand = "rsync -v -r --checksum --exclude 'keybase.txt' --exclude 'stats' --delete -e ssh _site/ AkashaAS:axiomatic/" }
+        { deployCommand = "rsync -avr --chown=www-data:www-data --checksum --exclude 'keybase.txt' --delete -e ssh _site/ AkashaR:axiomatic/" }
 
 mostRecentPost :: Compiler (Item String)
 mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "posts/*" "index")
