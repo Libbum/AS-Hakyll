@@ -16,7 +16,7 @@ deploy: clean rebuild
 
 post:
 	echo -e '---\ntitle: '${TITLE}'\n---\n\n' >  posts/`date +%Y-%m-%d`-${TITLE}.markdown
-	vim posts/`date +%Y-%m-%d`-${TITLE}.markdown
+	nvim posts/`date +%Y-%m-%d`-${TITLE}.markdown
 
 preview: rebuild
 	$(watch)
