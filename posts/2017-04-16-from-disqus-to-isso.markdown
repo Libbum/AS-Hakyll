@@ -1,6 +1,6 @@
 ---
 title: From Disqus to Isso
-byline: Current comment security is a sad state of affairs
+byline: Current comment security is a sad state of affairs.
 tags: JavaScript, Security
 ---
 
