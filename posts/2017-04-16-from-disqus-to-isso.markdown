@@ -81,10 +81,7 @@ div(class='isso-comment' id='isso-#{comment.id}')
     if conf.avatar
         div(class='avatar')
             svg(data-hash='#{comment.hash}')
-    if comment.hash ==  '213ac8a3c887'
-        div(class='text-wrapper author-highlight')
-    else
-        div(class='text-wrapper')
+    div(class=(comment.hash == '213ac8a3c887') ? 'text-wrapper author-highlight' : 'text-wrapper')
         div(class='isso-comment-header' role='meta')
 ```
 
@@ -103,4 +100,10 @@ To see this in action, perhaps take a look at [one of the only actual comment se
 And yes: the fact that I've just ranted about commenting systems without having much use of a comment system at all does not escape me.
 Perhaps my readers don't care for Disqus more-so than I?
 
+---
+
+**Update April 21, 2017**
+
+I actually managed to build this [pull request](https://github.com/posativ/isso/pull/321) much quicker than I anticipated.
+This is a fully functional blog author highlighting system -- a little different than the one I've written about above, but much less of a hack job.
 
