@@ -14,6 +14,7 @@ function showAbstract(key) {
 document.addEventListener( "DOMContentLoaded", ready, false );
 
 function ready() {
+  document.getElementById('psnfed').onclick = function () { showAbstract('1705.08638'); };
   document.getElementById('rvmm').onclick = function () { showAbstract('1606.08681'); };
   document.getElementById('tddelocal').onclick = function () { showAbstract('1508.05204'); };
   document.getElementById('pop2016').onclick = function () { showAbstract('10.1063/1.4948424'); };
