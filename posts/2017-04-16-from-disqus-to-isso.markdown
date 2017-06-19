@@ -8,9 +8,9 @@ Due to my erroneous assumption that an OVZ container is indistinguishable from a
 
 Starting from a clean install I went about revamping a number of things, as well as keeping on top of the new security measures that have been added to the [observatory](https://observatory.mozilla.org) in the past six months.
 
-I love static sites and have no use for too much dynamic frivolity, which also means I can tighten up security policies so my server is (hopefully) more of a vault with an excellent CCTV system for you all to look inside with.
+I love static sites and have no use for too much dynamic frivolity, which also means I can tighten up security policies so my server is (hopefully) more of a vault with an excellent CCTV system for you all to look inside <!--BLURB--> with.
 But comments on this blog have been an issue.
-[Disqus](https://disqus.com) has been a necessary evil since this blog's inception, but both my own and the worries of the [internets](https://stiobhart.net/2017-02-21-disqusting/) are something that needed tending to. <!--BLURB--> &nbsp;
+[Disqus](https://disqus.com) has been a necessary evil since this blog's inception, but both my own and the worries of the [internets](https://stiobhart.net/2017-02-21-disqusting/) are something that needed tending to.
 
 Just look at this CSP header!
 
