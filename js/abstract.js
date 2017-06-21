@@ -14,7 +14,7 @@ function showAbstract(key) {
 document.addEventListener( "DOMContentLoaded", ready, false );
 
 function ready() {
-  document.getElementById('psnfed').onclick = function () { showAbstract('1705.08638'); };
+  document.getElementById('prl2017').onclick = function () { showAbstract('10.1103/PhysRevLett.118.255001'); };
   document.getElementById('epjd2017').onclick = function () { showAbstract('10.1140/epjd/e2017-80102-2'); };
   document.getElementById('tddelocal').onclick = function () { showAbstract('1508.05204'); };
   document.getElementById('pop2016').onclick = function () { showAbstract('10.1063/1.4948424'); };
