@@ -225,6 +225,12 @@
         margin-bottom: 2em;
     }
 
+    ol {
+        color: #666;
+        list-style-type: decimal;
+        margin-left: 40px;
+    }
+
     section,
     article
     {
