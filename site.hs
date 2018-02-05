@@ -27,12 +27,6 @@ main = hakyllWith config $ do
         route   idRoute
         compile compressCssCompiler
 
-    match "about.markdown" $ do
-        route   $ setExtension "html"
-        compile $ pandocHtml5Compiler (storeDirectory config)
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= relativizeUrls
-
     tags <- buildTags "posts/*" $ fromCapture "tags/*.html"
 
     allPosts <- getMatches "posts/*"
@@ -86,6 +80,18 @@ main = hakyllWith config $ do
                 >>= loadAndApplyTemplate "templates/default.html" papersCtx
                 >>= relativizeUrls
 
+    create ["about.html"] $ do
+        route idRoute
+        compile $ do
+            let aboutCtx =
+                    constField "title" "About"            <>
+                    defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/about.html" aboutCtx
+                >>= loadAndApplyTemplate "templates/default.html" aboutCtx
+                >>= relativizeUrls
+    
     tagsRules tags $ \tag pattern -> do
         let tagCtx = constField "title" ("Posts tagged with " ++ tag) <> defaultContext
 
